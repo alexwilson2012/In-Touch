@@ -11,23 +11,85 @@
         <h1>TakeControl</h1>
 
 
-<p id="demo">Click the button to get your coordinates:</p>
-<button onclick="getLocation()">Try It</button>
+<p id="demo"></p>
+<button onclick="getLocation()">I have arrived</button>
+
+
 <script>
+
 var x=document.getElementById("demo");
+
 function getLocation()
-  {
+{
   if (navigator.geolocation)
     {
     navigator.geolocation.getCurrentPosition(showPosition);
     }
   else{x.innerHTML="Geolocation is not supported by this browser.";}
-  }
+}
+
 function showPosition(position)
+{
+  var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude;
+  sendNotification(currentCoords);
+}
+
+
+function sendNotification(coords)
+{
+    // Call the XMLHttp function
+    var xmlHttp = getXMLHttp();
+
+    xmlHttp.onreadystatechange = function()
+    {
+        if(xmlHttp.readyState == 4)
+        {
+            x.innerHTML = xmlHttp.responseText;
+        }
+    }
+
+    // POST COMMAND
+    var message = coords;
+
+    xmlHttp.open("POST", 'sendnotification.php', true);
+    xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlHttp.setRequestHeader("Content-length","message.length");
+    xmlHttp.setRequestHeader("Connection","close");
+    xmlHttp.send(message);
+}
+
+  // Setup a request function FOR USE WITH ALL AJAX REQUESTS
+function getXMLHttp()
+{
+  var xmlHttp
+  try
   {
-  x.innerHTML="Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;    
+    //Firefox, Opera 8.0+, Safari
+    xmlHttp = new XMLHttpRequest();
   }
+  catch(e)
+  {
+    //Internet Explorer
+    try
+    {
+      xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    catch(e)
+    {
+      try
+      {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      catch(e)
+      {
+        alert("Your browser does not support AJAX!")
+        return false;
+      }
+    }
+  }
+  return xmlHttp;
+}
+
 </script>
 
 
