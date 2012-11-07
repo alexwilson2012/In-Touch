@@ -1,14 +1,9 @@
 <?php
 
-$to      = 'AlexWilson2012@u.northwestern.edu';
-$subject = 'TakeControl - Notification';
-$message = 'Alex has arrived at Latitude ' . $_POST['Latitude'] . ', and Longitude ' . $_POST['Longitude'] . '. Unfamiliar with this location? Here\'s a map.';
-$headers = 'From: AlexWilson2012@u.northwestern.edu' . "\r\n" .
-    'Reply-To: AlexWilson2012@u.northwestern.edu' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+// Execute python script on command line
+echo exec('python send_email.py '.$_POST['email'].' '.$_POST['Latitude'].' '.$_POST['Longitude']);
 
-mail($to, $subject, $message, $headers);
-
-echo 'We have notified ' . $to . ' that you have arrived!';
+// Send confirmation message back to the user
+echo 'We have notified ' . $_POST['email'] . ' that you have arrived!';
 
 ?>

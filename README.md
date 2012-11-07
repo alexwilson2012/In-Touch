@@ -1,4 +1,4 @@
 TakeControl
 ===========
 
-Tracking all the time you waste on your apps!
+Tracking your kids so you they don't run away!
