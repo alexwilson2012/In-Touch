@@ -15,7 +15,72 @@
          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
          <![endif]-->
         
-        
+        <style>
+		div#submitForm input {
+  background: url(img/sumbit.png) scroll 0 0 transparent;
+  color: #000000;
+  cursor: pointer;
+  height: 25px;
+  padding-bottom: 2px;
+  width: 85px;
+  border: none;
+font-size:11px;
+}
+		</style>
+		
+		
+	<script>
+	function imhere(status){
+	var latitude;
+	var longitude ;
+	var emailid=document.getElementById('email').value ;
+	alert(emailid);
+	alert(status);
+	  Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
+	
+	var geocoder = new google.maps.Geocoder();
+var address = "new york";
+
+geocoder.geocode( { 'address': address}, function(results, status) {
+
+if (status == google.maps.GeocoderStatus.OK) {
+     latitude = results[0].geometry.location.lat();
+ longitude = results[0].geometry.location.lng();
+    alert(latitude);
+	
+	 var TestObject = Parse.Object.extend("TestObject");
+var testObject = new TestObject();
+testObject.set("EmailID", emailid); 
+testObject.set("PlaceLatitude", latitude);
+ testObject.set("Placelongitude", longitude);
+  testObject.set(status, 00);
+
+ alert("yay! it worked");
+testObject.save(null, {
+  success: function(testObject) {
+    alert("great! it worked");
+  }
+});
+	
+	
+	
+    } 
+}); 
+	
+	
+   
+
+	
+	}
+	
+	</script>
+	
+	
+  
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.8.min.js"></script>
+  
+  
         <link href="font/stylesheet.css" rel="stylesheet" type="text/css" />
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
@@ -61,10 +126,15 @@
         <!-- MAIN CONTENT -->
         <div class="container content container-fluid" id="home">
         <p id="response"></p>
-        Enter email:<br>
-        <input type='text' id='email'><br>
-        <button onclick="getLocation()" class="btn btn-danger btn-large"><img src='img/envelope.png'> <br><br>Notify Parents</button>
-        
+       
+        <input type='text' id='email' value="email address" onfocus="if(this.value=='email address') this.value='';"><br>
+		 <div id="submitForm">
+        <input type="submit" value="I am here" name="submit" onClick="imhere('I am here')">&nbsp;&nbsp; <input type="submit" value="Coming home" name="submit" onClick="imhere('Coming home')">
+        </div>
+		
+	
+		
+		</div>
         <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bootstrap-collapse.js"></script>
