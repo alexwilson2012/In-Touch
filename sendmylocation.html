@@ -34,19 +34,19 @@ font-size:11px;
 	var latitude;
 	var longitude ;
 	var emailid=document.getElementById('email').value ;
-	alert(emailid);
-	alert(status);
+	//alert(emailid); //removing test popups
+	//alert(status);
 	  Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
 	
 	var geocoder = new google.maps.Geocoder();
-var address = "new york";
+var address = "chicago";
 
 geocoder.geocode( { 'address': address}, function(results, status) {
 
 if (status == google.maps.GeocoderStatus.OK) {
      latitude = results[0].geometry.location.lat();
  longitude = results[0].geometry.location.lng();
-    alert(latitude);
+    //alert(latitude);
 	
 	 var TestObject = Parse.Object.extend("TestObject");
 var testObject = new TestObject();
@@ -55,10 +55,10 @@ testObject.set("PlaceLatitude", latitude);
  testObject.set("Placelongitude", longitude);
   testObject.set(status, 00);
 
- alert("yay! it worked");
+ //alert("yay! it worked");
 testObject.save(null, {
   success: function(testObject) {
-    alert("great! it worked");
+    alert("Message sent");
   }
 });
 	
