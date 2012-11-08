@@ -41,14 +41,14 @@ html = """\
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TakeControl</title>
+        <title>In-Touch</title>
         <!-- Styles -->
         <link href="/css/reset.css" rel="stylesheet">
         <link href="/css/styles.css" rel="stylesheet">
     </head>
     
     <body onLoad="initializeMaps()">
-        <h1>TakeControl</h1>
+        <h1>In-Touch</h1>
 <img src='http://www.google.com/staticmap?center="""+latitude+","+longitude+"&markers="+latitude+","+longitude+""",red&zoom=14&size=450x250'>
     </body>
 </html>
