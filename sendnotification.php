@@ -4,6 +4,6 @@
 echo exec('python send_email.py '.$_POST['email'].' '.$_POST['Latitude'].' '.$_POST['Longitude']);
 
 // Send confirmation message back to the user
-echo 'We have notified ' . $_POST['email'] . ' that you have arrived!';
+echo 'Hi,' . $_POST['name'] . 'We have notified ' . $_POST['email'] . ' that you have arrived!';
 
 ?>
