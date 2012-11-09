@@ -31,12 +31,12 @@ longitude = sys.argv[3]
 
 # Create message container - the correct MIME type is multipart/alternative.
 msg = MIMEMultipart('alternative')
-msg['Subject'] = "Your kid just checked in"
+msg['Subject'] = sys.argv[4]+" just checked in"
 msg['From'] = from_me
 msg['To'] = to_you
 
 # Create the body of the message (a plain-text and an HTML version).
-text = "User is at Latitude - "+latitude+" and Longitude "+longitude
+text = sys.argv[4]+" is at Latitude - "+latitude+" and Longitude "+longitude
 html = """\
 <!DOCTYPE html>
 <html>
