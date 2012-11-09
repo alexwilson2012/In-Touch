@@ -1,3 +1,4 @@
+<script src='getLatLong.php'>
 var markers = [
                            ['Today @ 11:15AM', 42.0514992, -87.6812264],
                            ['Today @ 11:00AM', 42.0524992, -87.6892964],
