@@ -52,11 +52,11 @@ for (i = 0; i < markers.length; ++ i){
 // 	for (j=0; i<markers[i].length; ++j){
 // 		query
 
-query.count({
-success: function(number){alert(number)},
-eror: function(error) {}
-
-});
+// query.count({
+// success: function(number){alert(number)},
+// eror: function(error) {}
+// 
+// });
 		
 
 var markers = [
