@@ -17,7 +17,7 @@ function showPosition(position)
   window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
     params[key] = value;
   });
-  var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + params['email'];
+  var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + params['email']+ "&name=" + params['name'];
   // document.getElementById('response').innerHTML = currentCoords;
   sendNotification(currentCoords);
 }
