@@ -1,5 +1,5 @@
-// Get the location of the user
 
+// Get the location of the user
 function getLocation()
 {
   document.getElementById('response').innerHTML = '...sending';
