@@ -2,6 +2,7 @@
 // Get the location of the user
 function getLocation()
 {
+  document.getElementById('response').innerHTML = '...sending';
   if (navigator.geolocation)
     {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -12,7 +13,11 @@ function getLocation()
 // Send coordinates to other user in email form
 function showPosition(position)
 {
-  var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + document.getElementById('email').value;
+  var params = {};
+  window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
+    params[key] = value;
+  });
+  var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + params['email'];
   // document.getElementById('response').innerHTML = currentCoords;
   sendNotification(currentCoords);
 }
