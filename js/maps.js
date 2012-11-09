@@ -43,10 +43,10 @@ query.lessThanOrEqualTo("updatedAt", d);
 //var updatedAt =
 
 // //Creating matrix of cooridinates and text
-markers = new Array (query.length);
-for (i = 0; i < markers.length; ++ i){
-     markers [i] = new Array (3);
-     }
+// markers = new Array (query.length);
+// for (i = 0; i < markers.length; ++ i){
+//      markers [i] = new Array (3);
+//      }
 // 
 // for (i=0; i<markers.length; ++i){
 // 	for (j=0; i<markers[i].length; ++j){
@@ -61,7 +61,7 @@ for (i = 0; i < markers.length; ++ i){
 
 var markers = [
                            ['asdsd', 42.0514992, -87.6812264],
-                           [number, 42.0524992, -87.6892964],
+                           ['sdasd', 42.0524992, -87.6892964],
                            ['Today @ 10:00AM', 42.0563992, -87.6862764],
                            ['Last Night @ 8:10PM', 42.0544992, -87.6864464],
                            ['Last Night @ 6:30PM', 42.0565992, -87.6863464]
