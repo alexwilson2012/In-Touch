@@ -62,17 +62,35 @@ function initializeMaps() {
     var mapsArray = new Array ();
     
     
+    // Getting email from url
+    function GetURLParameter(sParam)
+    {
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++)
+        {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam)
+            {
+                return sParameterName[1];
+            }
+        }
+    }
+    var userEmail = decodeURIComponent(GetURLParameter('email'));
+
+    
+    
     //var mapsArray = new Array();
-    query.equalTo("EmailID", "alexwilson2012@u.northwestern.edu");
+    query.equalTo("EmailID", userEmail);
     query.find({
                success: function(object) {
                // The object was retrieved successfully.
-               for (k = 0; k < object.length; k++){
+               for (var k = 0; k < object.length; k++){
                mapsArray [k] = new Array (3);
                };
                
                for (var query_ii = 0; query_ii < object.length; query_ii++) {
-               mapsArray[query_ii][0] = object[query_ii].attributes.name;
+               mapsArray[query_ii][0] = "" + (object[query_ii].attributes.Address) + "<br>" + object[query_ii].attributes.updatedAt;
                mapsArray[query_ii][1] = object[query_ii].attributes.PlaceLatitude;
                mapsArray[query_ii][2] = object[query_ii].attributes.Placelongitude;
                };
@@ -91,11 +109,13 @@ function initializeMaps() {
                    bounds.extend(pos);
                    marker = new google.maps.Marker({
                                                    position: pos,
-                                                   map: map
+                                                   map: map,
+                                                   clickable: true,
+                                                   icon: 'http://google-maps-icons.googlecode.com/files/factory.png'
                                                    });
                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
                                                                    return function() {
-                                                                   infowindow.setContent(mapsArray[i][0]));
+                                                                   infowindow.setContent(mapsArray[i][0]);
                                                                    infowindow.open(map, marker);
                                                                    }
                                                                    })(marker, i));
