@@ -90,7 +90,7 @@ function initializeMaps() {
                };
                
                for (var query_ii = 0; query_ii < object.length; query_ii++) {
-               mapsArray[query_ii][0] = "" + (object[query_ii].attributes.Address) + "<br>" + object[query_ii].attributes.updatedAt; // .toISOString();
+               mapsArray[query_ii][0] = "" + (object[query_ii].attributes.Address) + "<br>" + object[query_ii].updatedAt; // .toISOString();
                mapsArray[query_ii][1] = object[query_ii].attributes.PlaceLatitude;
                mapsArray[query_ii][2] = object[query_ii].attributes.Placelongitude;
                };
