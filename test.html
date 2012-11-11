@@ -1,0 +1,68 @@
+<html>
+<head>
+	<title>testing out parse.com</title>
+</head>
+
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.8.min.js"></script>
+
+<script type="text/javascript">
+
+window.onload = function() {
+
+Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
+
+
+// Using a QUERY.GET() command to get a single entry from parse.com
+// var TestObject = Parse.Object.extend("TestObject");
+// var query = new Parse.Query(TestObject);
+// query.get("Pjow95QwjZ", {
+//   success: function(object) {
+//     // The object was retrieved successfully.
+//     document.getElementById('test').innerHTML = object.attributes.name + '<br>' + Object.keys(object.attributes);
+//     // document.getElementById('test').innerHTML = Object.keys(object);
+//   },
+//   error: function(object, error) {
+//     // The object was not retrieved successfully.
+//     // error is a Parse.Error with an error code and description.
+//     document.getElementById('test').innerHTML = 'FAIL';
+//   }
+// });
+
+// Using QUERY.FIND() command to get multiple entries from a parse.com query
+var TestObject = Parse.Object.extend("TestObject");
+var query = new Parse.Query(TestObject);
+query.equalTo("EmailID", "alexwilson2012@u.northwestern.edu");
+query.find({
+  success: function(object) {
+    // The object was retrieved successfully.
+    var test_string = '';
+    for (var query_ii = 0; query_ii < object.length; query_ii++) {
+   			test_string = test_string + '<br><br><b>Entry #'+(query_ii+1)+':</b> '+
+   				"<br>Name: "+object[query_ii].attributes.name +
+   				"<br>Latitude: "+object[query_ii].attributes.PlaceLatitude +
+   				"<br>Longitude: "+object[query_ii].attributes.Placelongitude;
+    };
+    document.getElementById('test').innerHTML = test_string;
+    // document.getElementById('test').innerHTML = Object.keys(object);
+  },
+  error: function(object, error) {
+    // The object was not retrieved successfully.
+    // error is a Parse.Error with an error code and description.
+    document.getElementById('test').innerHTML = 'FAIL';
+  }
+});
+
+}
+
+</script>
+
+
+<body>
+
+
+	<div id='test'>STUFF SHOULD CHANGE</div>
+
+
+
+</body>
+</html>
