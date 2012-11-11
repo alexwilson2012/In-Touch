@@ -111,7 +111,7 @@ function initializeMaps() {
                                                    position: pos,
                                                    map: map,
                                                    clickable: true,
-                                                   icon: 'http://google-maps-icons.googlecode.com/files/factory.png'
+                                                   icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld='+ (i+1) +'|FF0000|000000'
                                                    });
                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
                                                                    return function() {
