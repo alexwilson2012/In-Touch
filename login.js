@@ -18,7 +18,7 @@ function addLoginToParse(form)
 	// login.set("address", results[0].formatted_address);
 	login.save(null, {
 		success: function(login) {
-			var url_return_string = "Link for Parents:<br><a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"'>\
+			var url_return_string = "<br>Link for Parents:<br><a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"'>\
 			http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"</a><br>";
 			url_return_string = url_return_string + "<br>Link for Teens:<br><a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"'>\
 			http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"</a><br>";
