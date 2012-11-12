@@ -19,7 +19,32 @@ function showPosition(position)
   });
   var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + params['email']+ "&name=" + params['name'];
   // document.getElementById('response').innerHTML = currentCoords;
-  sendNotification(currentCoords);
+  sendDataToParse(params['email'],position.coords.latitude,position.coords.longitude,params['name'],currentCoords);
+}
+
+function sendDataToParse(email,latitude,longitude,name,currentCoords)
+{  
+  Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
+  var teen_checkin_obj = Parse.Object.extend("teen_checkin");
+  var teen_db = new teen_checkin_obj();
+  teen_db.set("name", name); 
+  teen_db.set("emailId", email); 
+  teen_db.set("latitude", latitude);
+  teen_db.set("longitude", longitude);
+
+  var geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(parseFloat(latitude),parseFloat(longitude));
+  geocoder.geocode( { 'latLng': latlng}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      teen_db.set("address", results[0].formatted_address);
+      teen_db.save(null, {
+        success: function(teen_db) {
+          // If everything is successul, send email
+          sendNotification(currentCoords);
+        }
+      });
+    } 
+  });
 }
 
 // Sets up the AJAX call to sendnotification.php, which will call the python script on the server

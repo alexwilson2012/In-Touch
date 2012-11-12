@@ -55,8 +55,8 @@ function initializeMaps() {
     // });
     
     // Using QUERY.FIND() command to get multiple entries from a parse.com query
-    var TestObject = Parse.Object.extend("TestObject");
-    var query = new Parse.Query(TestObject);
+    var teen_checkin_obj = Parse.Object.extend("teen_checkin");
+    var query = new Parse.Query(teen_checkin_obj);
     
     // //Creating matrix of cooridinates and text
     var mapsArray = new Array ();
@@ -81,7 +81,7 @@ function initializeMaps() {
     
     
     //var mapsArray = new Array();
-    query.equalTo("EmailID", userEmail);
+    query.equalTo("emailId", userEmail);
     query.find({
                success: function(object) {
                // The object was retrieved successfully.
@@ -90,9 +90,9 @@ function initializeMaps() {
                };
                
                for (var query_ii = 0; query_ii < object.length; query_ii++) {
-               mapsArray[query_ii][0] = "" + (object[query_ii].attributes.Address) + "<br>" + object[query_ii].updatedAt; // .toISOString();
-               mapsArray[query_ii][1] = object[query_ii].attributes.PlaceLatitude;
-               mapsArray[query_ii][2] = object[query_ii].attributes.Placelongitude;
+               mapsArray[query_ii][0] = "" + (object[query_ii].attributes.address) + "<br>" + object[query_ii].updatedAt; // .toISOString();
+               mapsArray[query_ii][1] = object[query_ii].attributes.latitude;
+               mapsArray[query_ii][2] = object[query_ii].attributes.longitude;
                };
                
                    var myOptions = {
