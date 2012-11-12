@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>inTouch</title>
+<!-- Parse.com js file -->
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.8.min.js"></script>
+<!-- Google Maps api js file -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+<!-- Our own js file -->
+<script src="login.js"></script>
+
+<!-- Formatting meta stuff -->
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+
+</head>
+<body style="margin:0px; padding:0px; text-align: center;">
+
+	<form name='login_form'>
+		Parent Name: <input type='text' name='parent_name'/><br>
+		Child Name: <input type='text' name='child_name'/><br>
+		Parent's Email: <input type='text' name='email'/><br>
+		Add home location: <input type='checkbox' name='home' onclick='initialize()'/><br>
+		<input type='button' name='get_url' value='Sign Up' onclick='addLoginToParse(this.form)'/><br>
+	</form>
+
+	<div id="map_canvas" style="width: 550px; height: 450px;"></div> 
+
+	<div id="url_results"></div>
+
+</body>
+</html>
