@@ -17,9 +17,25 @@ function showPosition(position)
   window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
     params[key] = value;
   });
-  var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + params['email']+ "&name=" + params['name'];
-  // document.getElementById('response').innerHTML = currentCoords;
-  sendDataToParse(params['email'],position.coords.latitude,position.coords.longitude,params['name'],currentCoords);
+
+
+  Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
+
+  // Using QUERY.FIND() command to get multiple entries from a parse.com query
+  var user_login_obj = Parse.Object.extend("user_login");
+  var query = new Parse.Query(user_login_obj);
+  query.equalTo("unique_id", parseInt(params["unique_id"]));
+  query.find({
+    success: function(object) {
+        var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + object[0].attributes.email+ "&name=" + object[0].attributes.child_name+"&parent_name="+object[0].attributes.parent_name;
+        // document.getElementById('response').innerHTML = currentCoords;
+        sendDataToParse(object[0].attributes.email,position.coords.latitude,position.coords.longitude,object[0].attributes.child_name,currentCoords);
+    },
+    error: function(object, error) {
+      // The object was not retrieved successfully.
+      // error is a Parse.Error with an error code and description.
+    }
+  });
 }
 
 function sendDataToParse(email,latitude,longitude,name,currentCoords)

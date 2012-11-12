@@ -33,6 +33,47 @@
 
 <script type="text/javascript">
 
+var userEmail;
+var child_name
+
+function initializeUniqueId()
+{
+	var params = {};
+	  window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
+	    params[key] = value;
+	  });
+
+    Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
+
+	// Using QUERY.FIND() command to get multiple entries from a parse.com query
+	var user_login_obj = Parse.Object.extend("user_login");
+	var query = new Parse.Query(user_login_obj);
+	query.equalTo("unique_id", parseInt(params["unique_id"]));
+	query.find({
+	success: function(object) {
+	    // var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + object[0].attributes.email+ "&name=" + object[0].attributes.child_name+"&parent_name="+object[0].attributes.parent_name;
+	    // document.getElementById('response').innerHTML = currentCoords;
+	    // sendDataToParse(object[0].attributes.email,position.coords.latitude,position.coords.longitude,object[0].attributes.child_name,currentCoords);
+	    if(object[0] == null)
+	    {
+	    	// Unique ID does not match
+	    	alert('Incorrect Unique ID');
+	    	// Link to registration page?
+	    }
+	    else
+	    {
+		    userEmail = object[0].attributes.email;
+		    child_name = object[0].attributes.child_name;
+		    initializeMaps();
+		}
+	},
+	error: function(object, error) {
+	  // The object was not retrieved successfully.
+	  // error is a Parse.Error with an error code and description.
+	}
+	});
+}
+
 
 function initializeMaps() {
     Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
@@ -62,28 +103,35 @@ function initializeMaps() {
     var mapsArray = new Array ();
     
     
-    // Getting email from url
-    function GetURLParameter(sParam)
-    {
-        var sPageURL = window.location.search.substring(1);
-        var sURLVariables = sPageURL.split('&');
-        for (var i = 0; i < sURLVariables.length; i++)
-        {
-            var sParameterName = sURLVariables[i].split('=');
-            if (sParameterName[0] == sParam)
-            {
-                return sParameterName[1];
-            }
-        }
-    }
-    var userEmail = decodeURIComponent(GetURLParameter('email'));
+    // // Getting email from url
+    // function GetURLParameter(sParam)
+    // {
+    //     var sPageURL = window.location.search.substring(1);
+    //     var sURLVariables = sPageURL.split('&');
+    //     for (var i = 0; i < sURLVariables.length; i++)
+    //     {
+    //         var sParameterName = sURLVariables[i].split('=');
+    //         if (sParameterName[0] == sParam)
+    //         {
+    //             return sParameterName[1];
+    //         }
+    //     }
+    // }
+    // var userEmail = decodeURIComponent(GetURLParameter('email'));
 
-    
     
     //var mapsArray = new Array();
     query.equalTo("emailId", userEmail);
     query.find({
                success: function(object) {
+               	if(object[0] == null)
+			    {
+			    	// Child has not checked in yet, or hasn't checked in recently
+			    	alert(child_name+" hasn't checked in recently");
+			    	// Link to call, text, or email child_name???
+			    }
+
+
                // The object was retrieved successfully.
                for (var k = 0; k < object.length; k++){
                mapsArray [k] = new Array (3);
@@ -136,7 +184,7 @@ function initializeMaps() {
 </script>
 
 
-<body onLoad="initializeMaps()" data-spy="scroll">
+<body onLoad="initializeUniqueId()" data-spy="scroll">
 
 <!-- TOP MENU NAVIGATION -->
 <div class="navbar navbar-fixed-top">
