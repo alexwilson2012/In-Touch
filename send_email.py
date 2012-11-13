@@ -22,7 +22,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
   
 # Email from and to set here, sys.argv[1] is the TO EMAIL ADDRESS
-from_me = 'TakeControl394@gmail.com'
+from_me = 'inTouch inTouch394@gmail.com'
 to_you  = sys.argv[1]
 
 # Latitude and Longitude are passed in as arguments
@@ -41,14 +41,14 @@ html = """\
 <!DOCTYPE html>
 <html>
     <head>
-        <title>In-Touch</title>
+        <title>inTouch</title>
         <!-- Styles -->
         <link href="/css/reset.css" rel="stylesheet">
         <link href="/css/styles.css" rel="stylesheet">
     </head>
     
     <body onLoad="initializeMaps()">
-        <h1>In-Touch</h1>
+        <h1>inTouch</h1>
 <img src='http://www.google.com/staticmap?center="""+latitude+","+longitude+"&markers="+latitude+","+longitude+""",red&zoom=14&size=450x250'>
     </body>
 </html>
@@ -66,7 +66,7 @@ msg.attach(part2)
   
   
 # Send email from our new TakeControl GMAIL account
-username = 'takecontrol394@gmail.com'  
+username = 'intouch394@gmail.com'  
 password = 'eecs394!'
   
 # The actual mail send  
