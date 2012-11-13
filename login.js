@@ -22,7 +22,7 @@ function addLoginToParse(form)
 			http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"</a><br>";
 			url_return_string = url_return_string + "<br>Link for Teens:<br><a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"'>\
 			http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"</a><br>";
-			url_return_string = url_return_string + "<br>Worried you might forget?<br><input type='button' onclick='emailURL()' value='Send links to your email'/>"
+			// url_return_string = url_return_string + "<br>Worried you might forget?<br><input type='button' onclick='emailURL()' value='Send links to your email'/>"
 			document.getElementById('url_results').innerHTML = url_return_string;
 		}
 	});
