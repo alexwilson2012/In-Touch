@@ -23,9 +23,9 @@ function addLoginToParse(form)
 			//url_return_string = url_return_string + "<br>Give this link to your teen (for check-in):<br><a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"' target='_blank'>\
 			//http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"</a><br>";
 			
-			var url_return_string = "<input type='button' name='get_url' class='btn btn-primary btn-large' style='width:100%;' value='Your Dashboard' onclick='window.open('http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"');'/><br>";
+			var url_return_string = "<a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"' target='_blank'><input type='button' name='get_url' class='btn btn-primary btn-large' style='width:100%;' value='Your Dashboard'/></a><br>";
 			
-			url_return_string = url_return_string +"<input type='button' name='get_url' class='btn btn-warning btn-large' style='width:100%;' value='Give this link to your teen' onclick='window.open('http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"');'/><br>";
+			url_return_string = url_return_string +"<a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"' target='_blank'><input type='button' name='get_url' class='btn btn-warning btn-large' style='width:100%;' value='Give this link to your teen' /></a><br>";
 			
 			// url_return_string = url_return_string + "<br>Worried you might forget?<br><input type='button' onclick='emailURL()' value='Send links to your email'/>"
 			document.getElementById('url_results').innerHTML = url_return_string;
