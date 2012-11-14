@@ -57,8 +57,12 @@
 <div class="row-fluid" style="padding-top:50px;">
 	<form name='login_form' class="form-horizontal" style=" border:1px solid #eee; width:100%; ">
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='parent_name' placeholder="Parent Name"/><br>
-		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email' placeholder="Parent's Email"/><br>
 		<input type='text' class="input-large"  style="width:100%; padding:auto;" name='child_name' placeholder="Teen Name"/><br>
+		
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email' placeholder="Parent's Email"/><br>
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='phone' placeholder="Parent's Cellphone"/><br>
+		
+		
 		<input type='checkbox' name='home' onclick='initialize()'/> Add home location <br> <br>
 		<input type='button' name='get_url' class="btn btn btn-large" style="width:100%;" value='Sign Up' onclick='addLoginToParse(this.form)'/><br>
 	</form>
