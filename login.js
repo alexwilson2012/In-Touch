@@ -13,6 +13,7 @@ function addLoginToParse(form)
 	login.set("parent_name", form.parent_name.value);
 	login.set("child_name", form.child_name.value);
 	login.set("email", form.email.value); 
+	login.set("phone", form.phone.value); 
 	login.set("home_lat", home_latlng_block[0]);
 	login.set("home_lng", home_latlng_block[1]);
 	// login.set("address", results[0].formatted_address);
