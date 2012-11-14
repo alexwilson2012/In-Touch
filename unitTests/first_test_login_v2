@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://ec2-54-242-115-65.compute-1.amazonaws.com/login.html" />
+<title>first_test_login_v2</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">first_test_login_v2</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/login.html</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=parent_name</td>
+	<td>Parent</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=child_name</td>
+	<td>Teen</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=email</td>
+	<td>ijas@u.northwestern.edu</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=phone</td>
+	<td>7085436166</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//input[@name='']</td>
+	<td>1234 ridge ave, evanston, IL</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@name=''])[2]</td>
+	<td>1234 ridge ave, evanston, IL</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>xpath=(//input[@name=''])[3]</td>
+	<td>1234 ridge ave, evanston, IL </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=get_url</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a &gt; input[name=&quot;get_url&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='get_url'])[3]</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
