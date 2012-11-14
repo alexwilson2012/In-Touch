@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>inTouch | Sign-Up</title>
+<!-- Parse.com js file -->
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.8.min.js"></script>
+
+<!-- Formatting meta stuff -->
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+
+
+<link href="font/stylesheet.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<link href="css/media-queries.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link href="http://fonts.googleapis.com/css?family=Exo:400,800" rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript">
+
+
+// Sets up the AJAX call to sendnotification.php, which will call the python script on the server
+function emailComments(form)
+{
+
+	document.getElementById('response').innerHTML = "...sending";
+    // Call the XMLHttp function
+    var xmlHttp = getXMLHttp();
+
+    xmlHttp.onreadystatechange = function()
+    {
+        if(xmlHttp.readyState == 4)
+        {
+            document.getElementById('feedback_form').innerHTML = xmlHttp.responseText;
+
+        }
+    }
+
+    // POST COMMAND
+    var message = "name=" + form.name.value + "&email=" + form.email.value + "&comments=" + form.comments.value;
+
+    xmlHttp.open("POST", 'send_comment_email.php', true);
+    xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlHttp.setRequestHeader("Content-length","message.length");
+    xmlHttp.setRequestHeader("Connection","close");
+    xmlHttp.send(message);
+}
+
+// Setup a request function FOR USE WITH ALL AJAX REQUESTS
+function getXMLHttp()
+{
+  var xmlHttp
+  try
+  {
+    //Firefox, Opera 8.0+, Safari
+    xmlHttp = new XMLHttpRequest();
+  }
+  catch(e)
+  {
+    //Internet Explorer
+    try
+    {
+      xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    catch(e)
+    {
+      try
+      {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      catch(e)
+      {
+        alert("Your browser does not support AJAX!")
+        return false;
+      }
+    }
+  }
+  return xmlHttp;
+}
+
+</script>
+
+</head>
+<body>
+<div class="mycontainer" style="width:100%; padding:auto;">
+<!-- TOP MENU NAVIGATION -->
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+	
+			<a class="brand pull-left" href="index.html">
+			inTouch | Leave a Comment
+			</a>
+	
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+		
+			<div class="nav-collapse collapse">
+				<ul id="nav-list" class="nav pull-right">
+					<li><a href="#home">Parent</a></li>
+				</ul>
+			</div>
+		
+		</div>
+	</div>
+</div>
+
+<div id="feedback_form" class="row-fluid" style="padding-top:50px; width: 50%; margin-left: 10%;">
+	<form name='login_form' class="form-horizontal" style=" border:1px solid #eee; width:100%; ">
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='name' placeholder="Your Name"/><br>
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email' placeholder="Your Email"/><br>
+		<textarea type='textarea' class="input-large"  style="width:100%; padding:auto;" rows="10" name='comments' placeholder="Your comments"/></textarea>
+		<input type='button' name='get_url' class="btn btn btn-large" style="width:100%;" value='Send Comments' onclick='emailComments(this.form)'/><br>
+	</form>
+
+<div id='response'></div>
+</div>
+</div>	
+
+
+
+</body>
+</html>
