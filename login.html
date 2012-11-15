@@ -5,7 +5,8 @@
 <!-- Parse.com js file -->
 <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.8.min.js"></script>
 <!-- Google Maps api js file -->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>  -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <!-- Our own js file -->
 <script src="login.js"></script>
 
@@ -68,15 +69,16 @@
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='phone' placeholder="Parent's Cellphone"/><br>
 	<br>
 	<h2>Where?</h2>
-		<input type='text' class="input-large" style="width:100%; padding:auto;" name='' placeholder="Teen's Home Address"/><br>
-		<input type='text' class="input-large" style="width:100%; padding:auto;" name='' placeholder="Teen's School Address"/><br>
-		<input type='text' class="input-large" style="width:100%; padding:auto;" name='' placeholder="Teen's Work Address"/><br>
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_home' placeholder="Teen's Home Address"/><br>
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_school' placeholder="Teen's School Address"/><br>
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_work' placeholder="Teen's Work Address"/><br>
 		
 		
 		<!--<input type='checkbox' name='home' onclick='initialize()'/> Add home location--> <br> 
 		<input type='button' name='get_url' class="btn btn btn-large" style="width:100%;" value='Sign Up' onclick='addLoginToParse(this.form)'/><br>
 	</form>
 	<div id="url_results" ></div>
+	<div id='test'></div>
 	<!-- <div id="map_canvas" style="padding:auto; width: 100%; height: 450px;"></div>  -->
 
 </div>

@@ -4,7 +4,7 @@ var unique_id;
 function addLoginToParse(form)
 {
 	var home_latlng_block = String(home_latlng).replace('(','').replace(')','').split(',');
-	// document.body.innerHTML = form.parent_name.value;
+
 	Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
 	var user_login_obj = Parse.Object.extend("user_login");
 	var login = new user_login_obj();
@@ -14,24 +14,69 @@ function addLoginToParse(form)
 	login.set("child_name", form.child_name.value);
 	login.set("email", form.email.value); 
 	login.set("phone", form.phone.value); 
-	login.set("home_lat", home_latlng_block[0]);
-	login.set("home_lng", home_latlng_block[1]);
-	// login.set("address", results[0].formatted_address);
-	login.save(null, {
-		success: function(login) {
-			//var url_return_string = "<br>Your Dashboard (bookmark this):<br><a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"' target='_blank'>\
-			//http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"</a><br>";
-			//url_return_string = url_return_string + "<br>Give this link to your teen (for check-in):<br><a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"' target='_blank'>\
-			//http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"</a><br>";
-			
-			var url_return_string = "<a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"' target='_blank'><input type='button' name='get_url' class='btn btn-primary btn-large' style='width:100%;' value='Your Dashboard'/></a><br>";
-			
-			url_return_string = url_return_string +"<a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"' target='_blank'><input type='button' name='get_url' class='btn btn-warning btn-large' style='width:100%;' value='Give this link to your teen' /></a><br>";
-			
-			// url_return_string = url_return_string + "<br>Worried you might forget?<br><input type='button' onclick='emailURL()' value='Send links to your email'/>"
-			document.getElementById('url_results').innerHTML = url_return_string;
-		}
-	});
+
+  // Store the Home, Work, and School address presets, and aquire their latitude and longitude
+  // Since this is a call to googles api it requires a recursive call...sorry its messy
+  var latlng_home;
+  var latlng_work;
+  var latlng_school;
+  var address_home = form.address_home.value;
+  var address_work = form.address_work.value;
+  var address_school = form.address_school.value;
+
+  // Initialize the geocoder
+  geocoder = new google.maps.Geocoder();
+  geocoder.geocode( { 'address': address_work}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      // Save the work latitude and longitude
+      latlng_work = String(results[0].geometry.location).replace('(','').replace(')','').split(',');
+      geocoder.geocode( { 'address': address_home}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        // Save the home latitude and longitude
+        latlng_home = String(results[0].geometry.location).replace('(','').replace(')','').split(',');
+        geocoder.geocode( { 'address': address_school}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          // Save the school latitude and longitude
+          latlng_school = String(results[0].geometry.location).replace('(','').replace(')','').split(',');
+
+            // Assign addresses and latitude/longitude coordinates to parse
+            login.set("home_address", address_home);
+            login.set("school_address", address_school);
+            login.set("work_address", address_work);
+            login.set("home_lat", latlng_home[0]);
+            login.set("home_lng", latlng_home[1]);
+            login.set("work_lat", latlng_work[0]);
+            login.set("work_lng", latlng_work[1]);
+            login.set("school_lat", latlng_school[0]);
+            login.set("school_lng", latlng_school[1]);
+
+            // Save all variables to pares.com
+            login.save(null, {
+              success: function(login) {
+                // Print unique links for parent and teenager
+                var url_return_string = "<a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"' target='_blank'><input type='button' name='get_url' class='btn btn-primary btn-large' style='width:100%;' value='Your Dashboard'/></a><br>";
+                url_return_string = url_return_string +"<a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"' target='_blank'><input type='button' name='get_url' class='btn btn-warning btn-large' style='width:100%;' value='Give this link to your teen' /></a><br>";
+                // CALL FUNCTION TO EMAIL LINKS TO PARENT HERE
+                // url_return_string = url_return_string + "<br>Worried you might forget?<br><input type='button' onclick='emailURL()' value='Send links to your email'/>"
+                document.getElementById('url_results').innerHTML = url_return_string;
+              }
+            });
+            } else {
+                return status;
+            }
+          });
+        } else {
+            return status;
+        }
+      });
+    } else {
+        return status;
+    }
+  });
+        //var url_return_string = "<br>Your Dashboard (bookmark this):<br><a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"' target='_blank'>\
+      //http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"</a><br>";
+      //url_return_string = url_return_string + "<br>Give this link to your teen (for check-in):<br><a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"' target='_blank'>\
+      //http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"</a><br>";
 } 
 
 
@@ -60,6 +105,21 @@ function createMarker(latlng, name, html) {
         });
     google.maps.event.trigger(marker, 'click');    
     return marker;
+}
+
+var geocoder;
+
+function codeAddress(address) {
+    var latlng_address;
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            latlng_address = String(results[0].geometry.location).replace('(','').replace(')','').split(',');
+            return latlng_address;
+        } else {
+            return status;
+        }
+    });
 }
 
 function initialize()
