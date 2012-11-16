@@ -1,5 +1,5 @@
 
-var preset_tolerance = 0.1; // as in ~0.1 mile radius
+var preset_tolerance = 0.2; // as in ~0.2 mile radius
 
 // Get the location of the user
 function getLocation()
