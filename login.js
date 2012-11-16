@@ -53,23 +53,33 @@ function addLoginToParse(form)
             // Save all variables to pares.com
             login.save(null, {
               success: function(login) {
-                // Print unique links for parent and teenager
-                var url_return_string = "<a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"' target='_blank'><input type='button' name='get_url' class='btn btn-primary btn-large' style='width:100%;' value='Your Dashboard'/></a><br>";
-                url_return_string = url_return_string +"<a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"' target='_blank'><input type='button' name='get_url' class='btn btn-warning btn-large' style='width:100%;' value='Give this link to your teen' /></a><br>";
-                // CALL FUNCTION TO EMAIL LINKS TO PARENT HERE
-                // url_return_string = url_return_string + "<br>Worried you might forget?<br><input type='button' onclick='emailURL()' value='Send links to your email'/>"
-                document.getElementById('url_results').innerHTML = url_return_string;
+                printUniqueURL(unique_id);
               }
             });
             } else {
+                login.save(null, {
+                  success: function(login) {
+                    printUniqueURL(unique_id);
+                  }
+                });
                 return status;
             }
           });
         } else {
+            login.save(null, {
+              success: function(login) {
+                printUniqueURL(unique_id);
+              }
+            });
             return status;
         }
       });
     } else {
+        login.save(null, {
+          success: function(login) {
+            printUniqueURL(unique_id);
+          }
+        });
         return status;
     }
   });
@@ -79,6 +89,15 @@ function addLoginToParse(form)
       //http://ec2-54-242-115-65.compute-1.amazonaws.com/sendmylocation.html?unique_id="+unique_id+"</a><br>";
 } 
 
+function printUniqueURL(unique_id)
+{
+  // Print unique links for parent and teenager
+  var url_return_string = "<a href='index.html?unique_id="+unique_id+"' target='_blank'><input type='button' name='get_url' class='btn btn-primary btn-large' style='width:100%;' value='Your Dashboard'/></a><br>";
+  url_return_string = url_return_string +"<a href='sendmylocation.html?unique_id="+unique_id+"' target='_blank'><input type='button' name='get_url' class='btn btn-warning btn-large' style='width:100%;' value='Give this link to your teen' /></a><br>";
+  // CALL FUNCTION TO EMAIL LINKS TO PARENT HERE
+  // url_return_string = url_return_string + "<br>Worried you might forget?<br><input type='button' onclick='emailURL()' value='Send links to your email'/>"
+  document.getElementById('url_results').innerHTML = url_return_string;
+}
 
 // global "map" variable
 var map = null;
