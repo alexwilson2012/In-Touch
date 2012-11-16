@@ -63,7 +63,7 @@ function sendDataToParse(emailVsText,phone,carrier,email,latitude,longitude,name
   var teen_checkin_obj = Parse.Object.extend("teen_checkin");
   var teen_db = new teen_checkin_obj();
   var user_login_obj = Parse.Object.extend("user_login");
-  var query = new Parse.Query(user_login_obj);
+  var user_login_db = new user_login_obj();
   
   var phone_email = new String(); 
   
