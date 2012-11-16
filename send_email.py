@@ -66,7 +66,8 @@ part2 = MIMEText(html, 'html')
 # According to RFC 2046, the last part of a multipart message, in this case
 # the HTML message, is best and preferred.
 msg.attach(part1)
-msg.attach(part2)
+if (sys.arg[6] == "")
+	msg.attach(part2)
   
   
 # Send email from our new TakeControl GMAIL account

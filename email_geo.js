@@ -46,9 +46,9 @@ function showPosition(position)
             preset_location = 'work';
         }
         // document.getElementById('response').innerHTML = preset_location;
-        var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + object[0].attributes.email+ "&name=" + object[0].attributes.child_name+"&parent_name="+object[0].attributes.parent_name+"&preset_location="+preset_location;
+        var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + object[0].attributes.email+ "&name=" + object[0].attributes.child_name+"&parent_name="+object[0].attributes.parent_name+"&preset_location="+preset_location+ "&phone_email=" + object[0].attributes.phone_email;
         // document.getElementById('response').innerHTML = currentCoords;
-        sendDataToParse(object[0].attributes.email,position.coords.latitude,position.coords.longitude,object[0].attributes.child_name,currentCoords);
+        sendDataToParse(object[0].attributes.text_vs_email,object[0].attributes.phone,object[0].attributes.carrier,object[0].attributes.email,position.coords.latitude,position.coords.longitude,object[0].attributes.child_name,currentCoords);
     },
     error: function(object, error) {
       // The object was not retrieved successfully.
@@ -57,21 +57,65 @@ function showPosition(position)
   });
 }
 
-function sendDataToParse(email,latitude,longitude,name,currentCoords)
+function sendDataToParse(emailVsText,phone,carrier,email,latitude,longitude,name,currentCoords)
 {  
   Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
   var teen_checkin_obj = Parse.Object.extend("teen_checkin");
   var teen_db = new teen_checkin_obj();
+  var user_login_obj = Parse.Object.extend("user_login");
+  var query = new Parse.Query(user_login_obj);
   
+  var phone_email = new String(); 
   
   teen_db.set("name", name); 
-  teen_db.set("emailId", email); 
-  // teen_db.set("",text_email);
-  // teen_db.set("",carrier);
+  //teen_db.set("emailId", email); 
+  teen_db.set("text_vs_email",emailVsText);
+  teen_db.set("phone", phone); 
+  teen_db.set("carrier",carrier);
   teen_db.set("latitude", latitude);
   teen_db.set("longitude", longitude);
   
+  
+////Carrier emails
+//  AT&T: number@txt.att.net
+// 	Qwest: number@qwestmp.com
+// 	T-Mobile: number@tmomail.net
+// 	Verizon: number@vtext.com
+// 	Sprint: number@messaging.sprintpcs.com or number@pm.sprint.com
+// 	Virgin Mobile: number@vmobl.com
+// 	Nextel: number@messaging.nextel.com
+// 	Alltel: number@message.alltel.com
+// 	Metro PCS: number@mymetropcs.com
+// 	Powertel: number@ptel.com
+// 	Boost Mobile: number@myboostmobile.com
+// 	Suncom: number@tms.suncom.com
+// 	Tracfone: number@mmst5.tracfone.com
+// 	U.S. Cellular: number@email.uscc.net
+///////////////////////////////////////
+  
+  
   //Insert logic cases for carrier here
+  if (emailVsText=="text_notification"){
+     if(carrier=="att"){phone_email=phone+"@txt.att.net";}
+     if(carrier=="sprint"){phone_email=phone+"@messaging.sprintpcs.com";}
+     if(carrier=="qwest"){phone_email=phone+"@qwestmp.com";}
+     if(carrier=="tmobile"){phone_email=phone+"@tmomail.net";}
+     if(carrier=="verizon"){phone_email=phone+"@vtext.com";}
+     if(carrier=="virgin"){phone_email=phone+"@pm.sprint.com";}
+     if(carrier=="nextel"){phone_email=phone+"@txt.att.net";}
+     if(carrier=="alltel"){phone_email=phone+"@pm.sprint.com";}
+     if(carrier=="metropcs"){phone_email=phone+"@txt.att.net";}
+     if(carrier=="powertel"){phone_email=phone+"@pm.sprint.com";}
+     if(carrier=="boost"){phone_email=phone+"@txt.att.net";}
+     if(carrier=="suncom"){phone_email=phone+"@pm.sprint.com";}
+     if(carrier=="tracfone"){phone_email=phone+"@txt.att.net";}
+     if(carrier=="uscellular"){phone_email=phone+"@pm.sprint.com";}
+     
+     teen_db.set("emailId", phone_email); 
+     user_login_obj.set("phone_email",phone_email);
+  } else {
+       teen_db.set("emailId", email); 
+  }
 
   var geocoder = new google.maps.Geocoder();
   var latlng = new google.maps.LatLng(parseFloat(latitude),parseFloat(longitude));
