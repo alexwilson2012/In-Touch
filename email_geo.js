@@ -62,10 +62,16 @@ function sendDataToParse(email,latitude,longitude,name,currentCoords)
   Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
   var teen_checkin_obj = Parse.Object.extend("teen_checkin");
   var teen_db = new teen_checkin_obj();
+  
+  
   teen_db.set("name", name); 
   teen_db.set("emailId", email); 
+  // teen_db.set("",text_email);
+  // teen_db.set("",carrier);
   teen_db.set("latitude", latitude);
   teen_db.set("longitude", longitude);
+  
+  //Insert logic cases for carrier here
 
   var geocoder = new google.maps.Geocoder();
   var latlng = new google.maps.LatLng(parseFloat(latitude),parseFloat(longitude));

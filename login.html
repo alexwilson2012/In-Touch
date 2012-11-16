@@ -8,6 +8,7 @@
 <!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>  -->
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <!-- Our own js file -->
+<script src="bootstrap-dropdown.js"></script>
 <script src="login.js"></script>
 
 <!-- Formatting meta stuff -->
@@ -67,13 +68,72 @@
 	<h2>What?</h2>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email' placeholder="Parent's Email"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='phone' placeholder="Parent's Cellphone"/><br>
+		<!--
+			AT&T: number@txt.att.net
+			Qwest: number@qwestmp.com
+			T-Mobile: number@tmomail.net
+			Verizon: number@vtext.com
+			Sprint: number@messaging.sprintpcs.com or number@pm.sprint.com
+			Virgin Mobile: number@vmobl.com
+			Nextel: number@messaging.nextel.com
+			Alltel: number@message.alltel.com
+			Metro PCS: number@mymetropcs.com
+			Powertel: number@ptel.com
+			Boost Mobile: number@myboostmobile.com
+			Suncom: number@tms.suncom.com
+			Tracfone: number@mmst5.tracfone.com
+			U.S. Cellular: number@email.uscc.net		
+		-->
+		<br>
+		<input type="hidden" name="carrier" value="" id="btn-input" />
+		<div class="btn-group" data-toggle="buttons-radio">  
+		  <button id="att" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn">AT&T</button>
+		  <button id="verizon" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Verizon</button>
+		  <button id="tmobile" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn">T-Mobile</button>
+		  <button id="sprint" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Sprint</button>
+		  <button id="virgin" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Virgin</button>
+		  <button id="nextel" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Nextel</button>
+		  <button id="alltel" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn">Alltel</button>
+		  <button id="uscellular" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">US Cellular</button>
+		  <button id="boost" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn">Boost</button>
+		  <button id="powertel" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Powertel</button>
+		  <button id="qwest" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Qwest</button>
+		  <button id="metropcs" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Metro PCS</button>
+		  <button id="suncom" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Suncom</button>
+		  <button id="tracfone" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Tracfone</button>
+		  </div>
+
+	<script>
+		  var btns = ['att','verizon','tmobile','sprint','virgin','virgin','nextel','alltel','uscellular','boost','powertel','qwest',
+		  				'metropcs','suncom','tracfone'];
+		  var input = document.getElementById('btn-input');
+		  for(var i = 0; i < btns.length; i++) {
+			document.getElementById(btns[i]).addEventListener('click', function() {
+			  input.value = this.value;
+			});
+		  }
+     </script>
 	<br>
 	<h2>Where?</h2>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_home' placeholder="Teen's Home Address"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_school' placeholder="Teen's School Address"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_work' placeholder="Teen's Work Address"/><br>
-		
-		
+	<br>
+	<h2>How do you prefer your notifications?</h2>
+		<input type="hidden" name="text_vs_email" value="" id="btn-input" />
+		<div class="btn-group" data-toggle="buttons-radio">  
+		  <button id="email_not" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn">Email</button>
+		  <button id="text_not" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Text</button>
+		</div>
+	<script>
+		  var btns = ['email_not', 'text_not'];
+		  var input = document.getElementById('btn-input');
+		  for(var i = 0; i < btns.length; i++) {
+			document.getElementById(btns[i]).addEventListener('click', function() {
+			  input.value = this.value;
+			});
+		  }
+     </script>
 		<!--<input type='checkbox' name='home' onclick='initialize()'/> Add home location--> <br> 
 		<input type='button' name='get_url' class="btn btn btn-large" style="width:100%;" value='Sign Up' onclick='addLoginToParse(this.form)'/><br>
 	</form>

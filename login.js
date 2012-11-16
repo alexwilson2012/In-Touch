@@ -3,6 +3,7 @@ var unique_id;
 
 function addLoginToParse(form)
 {
+	
 	var home_latlng_block = String(home_latlng).replace('(','').replace(')','').split(',');
 
 	Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
@@ -14,6 +15,8 @@ function addLoginToParse(form)
 	login.set("child_name", form.child_name.value);
 	login.set("email", form.email.value); 
 	login.set("phone", form.phone.value); 
+	login.set("text_vs_email", form.text_vs_email.value); 
+	login.set("carrier", form.carrier.value); 
 
   // Store the Home, Work, and School address presets, and aquire their latitude and longitude
   // Since this is a call to googles api it requires a recursive call...sorry its messy
