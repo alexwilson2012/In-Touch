@@ -51,6 +51,7 @@ function showPosition(position)
         sendDataToParse(object[0].attributes.email,position.coords.latitude,position.coords.longitude,object[0].attributes.child_name,currentCoords);
     },
     error: function(object, error) {
+        alert('error');
       // The object was not retrieved successfully.
       // error is a Parse.Error with an error code and description.
     }
