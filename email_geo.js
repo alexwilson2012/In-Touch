@@ -1,4 +1,6 @@
 
+var preset_tolerance = 0.1; // as in ~0.1 mile radius
+
 // Get the location of the user
 function getLocation()
 {
@@ -27,7 +29,24 @@ function showPosition(position)
   query.equalTo("unique_id", parseInt(params["unique_id"]));
   query.find({
     success: function(object) {
-        var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + object[0].attributes.email+ "&name=" + object[0].attributes.child_name+"&parent_name="+object[0].attributes.parent_name;
+        var distance_to_home = inPresetLocation(position.coords.latitude,position.coords.longitude,object[0].attributes.home_lat,object[0].attributes.home_lng);
+        var distance_to_work = inPresetLocation(position.coords.latitude,position.coords.longitude,object[0].attributes.work_lat,object[0].attributes.work_lng);
+        var distance_to_school = inPresetLocation(position.coords.latitude,position.coords.longitude,object[0].attributes.school_lat,object[0].attributes.school_lng);
+        var preset_location = '';
+        if(distance_to_home <= preset_tolerance)
+        {
+            preset_location = 'home';
+        }
+        else if(distance_to_school <= preset_tolerance)
+        {
+            preset_location = 'school';
+        }
+        else if(distance_to_work <= preset_tolerance)
+        {
+            preset_location = 'work';
+        }
+        // document.getElementById('response').innerHTML = preset_location;
+        var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + object[0].attributes.email+ "&name=" + object[0].attributes.child_name+"&parent_name="+object[0].attributes.parent_name+"&preset_location="+preset_location;
         // document.getElementById('response').innerHTML = currentCoords;
         sendDataToParse(object[0].attributes.email,position.coords.latitude,position.coords.longitude,object[0].attributes.child_name,currentCoords);
     },
@@ -52,15 +71,22 @@ function sendDataToParse(email,latitude,longitude,name,currentCoords)
   var latlng = new google.maps.LatLng(parseFloat(latitude),parseFloat(longitude));
   geocoder.geocode( { 'latLng': latlng}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
-      teen_db.set("address", results[0].formatted_address);
-      teen_db.save(null, {
+        teen_db.set("address", results[0].formatted_address);
+        teen_db.save(null, {
         success: function(teen_db) {
-          // If everything is successul, send email
-          sendNotification(currentCoords);
+            // If everything is successul, send email
+            sendNotification(currentCoords);
         }
-      });
+        });
     } 
   });
+}
+
+function inPresetLocation(current_lat,current_lng,location_lat,location_lng)
+{
+    // distance from current location to preset location in miles (assuming 69 miles/degree of latitude)
+    var distance_to_location = Math.sqrt(Math.pow(Math.abs(location_lat - current_lat),2) + Math.pow(Math.abs(location_lng - current_lng),2))*69;
+    return distance_to_location;
 }
 
 // Sets up the AJAX call to sendnotification.php, which will call the python script on the server

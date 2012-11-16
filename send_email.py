@@ -49,7 +49,11 @@ html = """\
     
     <body onLoad="initializeMaps()">
         <h1>inTouch</h1>
+        """+sys.argv[4]+" has arrived at "+sys.argv[5]+"<br>"+"""
 <img src='http://www.google.com/staticmap?center="""+latitude+","+longitude+"&markers="+latitude+","+longitude+""",red&zoom=14&size=450x250'>
+<br><br>
+--<br>
+inTouch
     </body>
 </html>
 """
