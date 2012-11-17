@@ -36,7 +36,7 @@ msg['From'] = from_me
 msg['To'] = to_you
 
 # Create the body of the message (a plain-text and an HTML version).
-text = sys.argv[4]+" is at Latitude - "+latitude+" and Longitude "+longitude
+text = sys.argv[4]+" is at Latitude - "+latitude+" and Longitude "+longitude+". "+sys.argv[5]
 html = """\
 <!DOCTYPE html>
 <html>

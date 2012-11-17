@@ -26,6 +26,18 @@ function addLoginToParse(form)
   var address_home = form.address_home.value;
   var address_work = form.address_work.value;
   var address_school = form.address_school.value;
+  if(address_school == '')
+  {
+    address_school = '1';
+  }
+  else if(address_work == '')
+  {
+    address_work = '1';
+  }
+  else if(address_home == '')
+  {
+    address_home = '1';
+  }
 
   // Initialize the geocoder
   geocoder = new google.maps.Geocoder();
@@ -60,6 +72,15 @@ function addLoginToParse(form)
               }
             });
             } else {
+
+              // Assign addresses and latitude/longitude coordinates to parse
+            login.set("home_address", address_home);
+            login.set("work_address", address_work);
+            login.set("home_lat", latlng_home[0]);
+            login.set("home_lng", latlng_home[1]);
+            login.set("work_lat", latlng_work[0]);
+            login.set("work_lng", latlng_work[1]);
+
                 login.save(null, {
                   success: function(login) {
                     printUniqueURL(unique_id);
@@ -69,6 +90,11 @@ function addLoginToParse(form)
             }
           });
         } else {
+
+            // Assign addresses and latitude/longitude coordinates to parse
+            login.set("work_address", address_work);
+            login.set("work_lat", latlng_work[0]);
+            login.set("work_lng", latlng_work[1]);
             login.save(null, {
               success: function(login) {
                 printUniqueURL(unique_id);
@@ -78,6 +104,8 @@ function addLoginToParse(form)
         }
       });
     } else {
+      // Assign addresses and latitude/longitude coordinates to parse
+            login.set("work_address", address_work);
         login.save(null, {
           success: function(login) {
             printUniqueURL(unique_id);
