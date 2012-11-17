@@ -133,7 +133,8 @@ function sendDataToParse(emailVsText,phone,carrier,email,latitude,longitude,name
      if(carrier=="tracfone"){phone_email=phone+"@txt.att.net";}
      if(carrier=="uscellular"){phone_email=phone+"@pm.sprint.com";}
      
-     teen_db.set("emailId", phone_email); 
+     // teen_db.set("emailId", phone_email); 
+     teen_db.set("emailId", email); 
      
   } else {
      teen_db.set("emailId", email); 
