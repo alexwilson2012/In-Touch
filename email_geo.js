@@ -147,6 +147,7 @@ function sendDataToParse(emailVsText,phone,carrier,email,latitude,longitude,name
         teen_db.set("address", results[0].formatted_address);
         teen_db.save(null, {
         success: function(teen_db) {
+            currentCoords = currentCoords+"&address="+results[0].formatted_address;
             // If everything is successul, send email
             sendNotification(currentCoords);
         }
