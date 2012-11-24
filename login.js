@@ -1,5 +1,6 @@
 
 var unique_id;
+var parent_email;
 
 function addLoginToParse(form)
 {
@@ -14,6 +15,7 @@ function addLoginToParse(form)
 	login.set("parent_name", form.parent_name.value);
 	login.set("child_name", form.child_name.value);
 	login.set("email", form.email.value); 
+  parent_email = form.email.value;
 	login.set("phone", form.phone.value); 
 	login.set("text_vs_email", form.text_vs_email.value); 
 	login.set("carrier", form.carrier.value); 
@@ -128,6 +130,32 @@ function printUniqueURL(unique_id)
   // CALL FUNCTION TO EMAIL LINKS TO PARENT HERE
   // url_return_string = url_return_string + "<br>Worried you might forget?<br><input type='button' onclick='emailURL()' value='Send links to your email'/>"
   document.getElementById('url_results').innerHTML = url_return_string;
+  // document.getElementById("test").innerHTML = 'hi';
+  emailUniqueId(unique_id);
+}
+
+function emailUniqueId(unique_id)
+{
+  // Call the XMLHttp function
+  var xmlHttp = getXMLHttp();
+
+  xmlHttp.onreadystatechange = function()
+  {
+      if(xmlHttp.readyState == 4)
+      {
+          document.getElementById("test").innerHTML = xmlHttp.responseText;
+      }
+  }
+
+  // POST COMMAND
+  var message = 'unique_id=' + unique_id + '&parent_email=' + parent_email;
+
+  xmlHttp.open("POST", 'send_unique_id_email.php', true);
+  xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xmlHttp.setRequestHeader("Content-length","message.length");
+  xmlHttp.setRequestHeader("Connection","close");
+  xmlHttp.send(message);
+
 }
 
 // global "map" variable
@@ -216,4 +244,37 @@ function showPosition(position) {
 
   });
 
+}
+
+
+// Setup a request function FOR USE WITH ALL AJAX REQUESTS
+function getXMLHttp()
+{
+  var xmlHttp
+  try
+  {
+    //Firefox, Opera 8.0+, Safari
+    xmlHttp = new XMLHttpRequest();
+  }
+  catch(e)
+  {
+    //Internet Explorer
+    try
+    {
+      xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+    }
+    catch(e)
+    {
+      try
+      {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      catch(e)
+      {
+        alert("Your browser does not support AJAX!")
+        return false;
+      }
+    }
+  }
+  return xmlHttp;
 }

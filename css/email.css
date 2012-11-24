@@ -1,0 +1,11 @@
+html, body {
+	margin: 0px;
+	font-family: arial;
+}
+
+
+input
+{
+	height: 100px;
+	width: 200px;
+}
