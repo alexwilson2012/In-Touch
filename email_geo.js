@@ -96,6 +96,8 @@ function sendDataToParse(emailVsText,phone,carrier,email,latitude,longitude,name
   teen_db.set("carrier",carrier);
   teen_db.set("latitude", latitude);
   teen_db.set("longitude", longitude);
+  var d = new Date();
+  teen_db.set("time", d.getTime())
   
   
 ////Carrier emails
