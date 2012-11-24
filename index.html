@@ -122,6 +122,7 @@ function initializeMaps() {
     
     //var mapsArray = new Array();
     query.equalTo("emailId", userEmail);
+    query.ascending("createdAt");
     query.find({
                success: function(object) {
                	if(object[0] == null)
@@ -136,12 +137,42 @@ function initializeMaps() {
                for (var k = 0; k < object.length; k++){
                mapsArray [k] = new Array (3);
                };
+
+               var color_array = new Array;
+               var name_array = new Array;
+               var array_len = 0;
                
                for (var query_ii = 0; query_ii < object.length; query_ii++) {
-               mapsArray[query_ii][0] = "" + (object[query_ii].attributes.address) + "<br>" + object[query_ii].updatedAt; // .toISOString();
+               mapsArray[query_ii][0] = object[query_ii].attributes.name+ "<br>" + (object[query_ii].attributes.address) + "<br>" + object[query_ii].updatedAt; // .toISOString();
                mapsArray[query_ii][1] = object[query_ii].attributes.latitude;
                mapsArray[query_ii][2] = object[query_ii].attributes.longitude;
+               color_array[query_ii] = 'FF0000';
+               var name_flag = 0;
+               for (var name_ii = 0; name_ii < name_array.length; name_ii++)
+               {
+                 if(name_array[name_ii][0] == object[query_ii].attributes.name)
+                 {
+                  name_flag = 1;
+                 }
                };
+               if(name_flag == 0)
+               {
+                
+                  name_array[array_len] = new Array;
+                  name_array[array_len][0] = object[query_ii].attributes.name;
+                  name_array[array_len][1] = toHex(160+(Math.round(Math.random()*100)),2)+toHex(160+(Math.round(Math.random()*100)),2)+toHex(160+(Math.round(Math.random()*100)),2);
+                  // alert(name_array)
+                  document.getElementById('legend').innerHTML = document.getElementById('legend').innerHTML + "<div style='padding: 10px; font-size: 1.2em; float: left; background: #"+name_array[array_len][1]+"'>" + name_array[array_len][0] + '</span>';
+                  name_flag = 0;
+                  array_len = array_len + 1;
+                }
+               // if(name_array.length == 0)
+               // {
+               //  name_array[0][0] = object[query_ii].attributes.name;
+               // }
+               };
+
+               // alert(name_array);
                
                    var myOptions = {
                    mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -155,18 +186,30 @@ function initializeMaps() {
                    for (i = 0; i < mapsArray.length; i++) {
                    var pos = new google.maps.LatLng(mapsArray[i][1], mapsArray[i][2]);
                    bounds.extend(pos);
-                   marker = new google.maps.Marker({
-                                                   position: pos,
-                                                   map: map,
-                                                   clickable: true,
-                                                   icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld='+ (i+1) +'|FF0000|000000'
-                                                   });
+                   var child_ii_select;
+                   for (var child_ii = 0; child_ii < array_len; child_ii++)
+                   {
+                     if(name_array[child_ii][0] == mapsArray[i][0].split('<br>')[0])
+                     {
+                      child_ii_select = child_ii
+                      // alert(name_array[child_ii][1])
+                      // alert(name_array[child_ii][0])
+                     }
+                   };
+                   {
+                     marker = new google.maps.Marker({
+                       position: pos,
+                       map: map,
+                       clickable: true,
+                       icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld='+ (i+1) +'|'+name_array[child_ii_select][1]+'|000000'
+                       });
+                   }
                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                                                                   return function() {
-                                                                   infowindow.setContent(mapsArray[i][0]);
-                                                                   infowindow.open(map, marker);
-                                                                   }
-                                                                   })(marker, i));
+                     return function() {
+                     infowindow.setContent(mapsArray[i][0]);
+                     infowindow.open(map, marker);
+                     }
+                     })(marker, i));
                    }
                    map.fitBounds(bounds);
                
@@ -181,6 +224,31 @@ function initializeMaps() {
 
 	
 }
+
+
+function toHex(number, min)
+{
+    var hexes = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+    var hex = '';
+    var min = min || 2;
+    var nibble;
+ 
+    do
+    {
+        nibble = number & 0x0f;
+        number = number >> 4;
+        hex = hexes[nibble] + hex;
+    }
+    while( number );
+ 
+    if( hex.length < min )
+    {
+        hex = new Array(min-hex.length+1).join('0') + hex;
+    }
+ 
+    return ''+hex;
+}
+
 </script>
 
 
@@ -218,6 +286,8 @@ function initializeMaps() {
 <!-- MAIN CONTENT -->
 <!--<div class="container content container-fluid" id="home"> -->
 <div id="map_canvas" style="height:500px; margin-top:40px;"></div>
+
+<div id='legend'>Legend<br></div>
 
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
