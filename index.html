@@ -162,7 +162,7 @@ function initializeMaps() {
                 
                   name_array[array_len] = new Array;
                   name_array[array_len][0] = object[query_ii].attributes.name;
-                  name_array[array_len][1] = toHex(155+(Math.round(Math.random()*100)),2)+toHex(160+(Math.round(Math.random()*100)),2)+toHex(160+(Math.round(Math.random()*100)),2);
+                  name_array[array_len][1] = toHex(155+(Math.round(Math.random()*100)),2)+toHex(155+(Math.round(Math.random()*100)),2)+toHex(155+(Math.round(Math.random()*100)),2);
                   name_array[array_len][2] = 0;
                   // alert(name_array)
                   document.getElementById('legend').innerHTML = document.getElementById('legend').innerHTML + "<div style='padding: 10px; font-size: 1.2em; float: left; background: #"+name_array[array_len][1]+"'>" + name_array[array_len][0] + '</span>';
@@ -174,7 +174,7 @@ function initializeMaps() {
                //  name_array[0][0] = object[query_ii].attributes.name;
                // }
                };
-               // alert(name_array);
+               alert(name_array);
                
                    var myOptions = {
                    mapTypeId: google.maps.MapTypeId.ROADMAP,
