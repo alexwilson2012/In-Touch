@@ -122,7 +122,7 @@ function initializeMaps() {
     
     //var mapsArray = new Array();
     query.equalTo("emailId", userEmail);
-    query.ascending("createdAt");
+    query.descending("createdAt");
     var d = new Date();
     query.greaterThan("time", d.getTime() - 1000*60*60*24)
     query.find({
