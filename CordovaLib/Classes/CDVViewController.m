@@ -21,6 +21,10 @@
 #import "CDV.h"
 #import "CDVCommandQueue.h"
 #import "CDVCommandDelegateImpl.h"
+//#import "RegionsAppDelegate.h"
+//#import "RegionsViewController.h"
+//#import "RegionAnnotationView.h"
+//#import "RegionAnnotation.h"
 
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
 
@@ -904,7 +908,7 @@ BOOL gSplashScreenShown = NO;
  */
 - (void)onAppDidEnterBackground:(NSNotification*)notification
 {
-    
+    NSLog(@"App is running in the background");
     
 //    - (void)applicationDidEnterBackground:(UIApplication *)application {
 //        /*
@@ -913,7 +917,7 @@ BOOL gSplashScreenShown = NO;
 //         */
 //        
 //        // Reset the icon badge number to zero.
-        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+//        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 //
 //        if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
 //            // Stop normal location updates and start significant location change updates for battery efficiency.

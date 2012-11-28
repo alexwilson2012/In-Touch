@@ -12,5 +12,6 @@
 @interface addReminderPin : CDVPlugin
 
 - (void) nativeFunction:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+//- (void)nativeFunction:(CDVInvokedUrlCommand*)command;
 
 @end
