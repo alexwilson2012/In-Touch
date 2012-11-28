@@ -1,91 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        
-        <!-- CHANGE THIS TITLE TAG -->
-        <title>inTouch</title>
-        
-        <!-- media-queries.js -->
-        <!--[if lt IE 9]>
-         <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-         <![endif]-->
-        <!-- html5.js -->
-        <!--[if lt IE 9]>
-         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-         <![endif]-->
-      	
-	
-  
-   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.8.min.js"></script>
-  
-  
-        <link href="font/stylesheet.css" rel="stylesheet" type="text/css" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-        <link href="css/styles.css" rel="stylesheet" type="text/css" />
-        <link href="css/media-queries.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css" media="screen" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- CHANGE THIS TITLE TAG -->
+    <title>inTouch</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.8.min.js"></script>
+<link href="font/stylesheet.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<link href="css/media-queries.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<meta name="viewport" content="width=device-width" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link href="http://fonts.googleapis.com/css?family=Exo:400,800" rel='stylesheet' type='text/css'>
             
-            <link href="http://fonts.googleapis.com/css?family=Exo:400,800" rel='stylesheet' type='text/css'>
-                
-    </head>
-                
-    <body onLoad="initializeMaps()" data-spy="scroll">
+</head>                
+<body data-spy="scroll">
     
-        <!-- TOP MENU NAVIGATION -->
-        <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-        <div class="container">
-        
-        <a class="brand pull-left" href="">
-        inTouch | Teenager
-        </a>
-        
+    <!-- TOP MENU NAVIGATION -->
+    <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+    <div class="container">
+    
+    <a class="brand pull-left" href="">
+    inTouch | Teenager
+    </a>
+    
 <!--         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        </a> -->
-        
-        <!-- <div class="nav-collapse collapse"> -->
-        <ul class="nav pull-right">
-          <li><a href="login.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"login")'>Login</a></li>
-          <li><a href="index.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"index")'>Parent</a></li>
-          <li><a href="sendmylocation.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"sendmylocation")'>Teenager</a></li>
-          <li><a href='comment_email.html'  style="color: yellow;" onmouseover='this.href=document.URL.replace(/sendmylocation/,"comment_email")'>Leave a Comment</a></li>
-        </ul>
-        <!-- </div> -->
-        
-        </div>
-        </div>
-        </div>
-        
-        
-        <!-- MAIN CONTENT -->
-        <div class="container content container-fluid" id="home">
-        <p id="response"></p>
-       
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </a> -->
+    
+    <!-- <div class="nav-collapse collapse"> -->
+    <ul class="nav pull-right">
+      <li><a href="login.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"login")'>Login</a></li>
+      <li><a href="index.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"index")'>Parent</a></li>
+      <li><a href="sendmylocation.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"sendmylocation")'>Teenager</a></li>
+      <li><a href='comment_email.html'  style="color: yellow;" onmouseover='this.href=document.URL.replace(/sendmylocation/,"comment_email")'>Leave a Comment</a></li>
+    </ul>
+    <!-- </div> -->
+    
+    </div>
+    </div>
+    </div>
+    
+    
+    <!-- MAIN CONTENT -->
+    <div class="container content container-fluid" id="home">
+    <p id="response"></p>
+   
     <form name='form'>
         <input type='text' class="input-large" style="width:100%; padding:auto;" name='unique_id' placeholder="Unique ID"/>
 		<input type='button' name='get_url' class="btn btn btn-large" style="width:100%;" value='Log In' onclick='window.location="sendmylocation.html?unique_id="+this.form.unique_id.value'/><br>
 	</form>
+
+    <button onclick="callNativePlugin('succ2ess');">Click for SUCCESS!</button>
+    <button onclick="callNativePlugin('error');">Click for ERROR!</button>
+            
 		
-		</div>
-        <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/bootstrap-collapse.js"></script>
-        <script src="js/bootstrap-scrollspy.js"></script>
-        <script src="fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-        <script src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-        <script src="js/init.js"></script>
-        <!-- Javascript ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="js/maps.js"></script>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	</div>
+    <script type="text/javascript" src="cordova-2.2.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+
+        var addReminderPin = {
+            callNativeFunction: function (success, fail, resultType) {
+                return Cordova.exec(success, fail, "com.inTouch.addReminderPin", "nativeFunction", [resultType]);
+            }
+        };
+    </script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
         
-    </body>
-    </html>
+        function callNativePlugin( returnSuccess ) {
+            addReminderPin.callNativeFunction( nativePluginResultHandler, nativePluginErrorHandler, returnSuccess );
+        }
+        
+        function nativePluginResultHandler (result) {
+            alert("SUCCESS: \r\n"+result );
+        }
+        
+        function nativePluginErrorHandler (error) {
+            alert("ERROR: \r\n"+error );
+        }
+    </script>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+    <script src="js/bootstrap-scrollspy.js"></script>
+    <script src="fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <script src="js/init.js"></script>
+    <!-- Javascript ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/maps.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    
+</body>
+</html>
