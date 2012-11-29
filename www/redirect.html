@@ -59,12 +59,55 @@
 
     <button onclick="callNativePlugin('42,-78');">Click for SUCCESS!</button>
     <button onclick="callNativePlugin('error');">Click for ERROR!</button>
+    <br>
+    <button onclick="test();">Click!</button>
+    <button onclick="test2();">Click2!</button>
+    <button onclick="test2();">Click3!</button>
             
 		
 	</div>
+    <script type="text/javascript" src="DGGeofencing.js"></script>
     <script type="text/javascript" src="cordova-2.2.0.js"></script>
     <script type="text/javascript" charset="utf-8">
 
+    function test3()
+    {
+        DGGeofencing.startMonitoringSignificantLocationChanges(
+        function(result) { 
+            console.log("Location Monitor Success: " + result);                
+        },
+        function(error) {  
+            console.log("failed to monitor location changes");   
+        }
+    );
+    }
+
+    function test2()
+    {
+        var params = {"fid": 'home2', "radius": 15, "latitude": 42, "longitude": -78};
+        console.log(params);
+        DGGeofencing.addRegion(
+            params,
+            function(result) { 
+                console.log("add success");
+            },
+            function(error) {   
+                alert("failed to add region");
+            }
+        );
+    }
+
+    function test()
+    {
+        DGGeofencing.getWatchedRegionIds(
+            function(result) { 
+                alert("success: " + result.regionids);                 
+            },
+            function(error) {  
+                alert("error");   
+            }
+        );
+    }
 
         var addReminderPin = {
             callNativeFunction: function (success, fail, resultType) {

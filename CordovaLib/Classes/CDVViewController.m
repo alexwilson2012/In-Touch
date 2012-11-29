@@ -52,6 +52,8 @@
 @synthesize wwwFolderName, startPage, invokeString, initialized;
 @synthesize commandDelegate = _commandDelegate;
 
+@synthesize locationManager;
+
 - (void)__init
 {
     if ((self != nil) && !self.initialized) {
@@ -292,6 +294,89 @@
         NSString* html = [NSString stringWithFormat:@"<html><body> %@ </body></html>", loadErr];
         [self.webView loadHTMLString:html baseURL:nil];
     }
+    
+    locationManager = [[CLLocationManager alloc] init];
+	locationManager.delegate = self;
+	locationManager.distanceFilter = kCLLocationAccuracyHundredMeters;
+	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+	
+	// Start updating location changes.
+	[locationManager startUpdatingLocation];
+    
+    
+//    if ([CLLocationManager regionMonitoringAvailable]) {
+//        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(42.0,-78.0);
+//        CLRegion *newRegion = [[CLRegion alloc] initCircularRegionWithCenter:coord
+//																	  radius:1000.0
+//																  identifier:[NSString stringWithFormat:@"%f, %f", 42.0, -78.0]];
+//        //        END HERE
+//		
+//		// Create an annotation to show where the region is located on the map.
+//
+//		
+//		// Start monitoring the newly created region.
+//		[locationManager startMonitoringForRegion:newRegion desiredAccuracy:kCLLocationAccuracyBest];
+//		
+//    
+//	}
+//	else {
+//		NSLog(@"Region monitoring is not available.");
+//	}
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"Update Location: %@", locations);
+}
+
+//- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region  {
+//	NSString *event = [NSString stringWithFormat:@"didEnterRegion %@ at %@", region.identifier, [NSDate date]];
+//    
+//    NSLog(@"enter");
+//    
+//    // Add Local Notification when user enters region
+//    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:1];
+//    UIApplication* app = [UIApplication sharedApplication];
+//    UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
+//    if(notifyAlarm)
+//    {
+//        notifyAlarm.fireDate = alertTime;
+//        notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
+//        notifyAlarm.repeatInterval = 0;
+//        notifyAlarm.alertBody = [NSString stringWithFormat:@"You have arrived at %@!",region.identifier];
+//        [app scheduleLocalNotification:notifyAlarm];
+//    }
+//	
+//}
+//
+//
+//- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+//	NSString *event = [NSString stringWithFormat:@"didExitRegion %@ at %@", region.identifier, [NSDate date]];
+//	
+//    NSLog(@"exit");
+//    
+//    // Add Local Notification when user enters region
+//    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:1];
+//    UIApplication* app = [UIApplication sharedApplication];
+//    UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
+//    if(notifyAlarm)
+//    {
+//        notifyAlarm.fireDate = alertTime;
+//        notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
+//        notifyAlarm.repeatInterval = 0;
+//        notifyAlarm.alertBody = [NSString stringWithFormat:@"You are leaving %@!",region.identifier];
+//        [app scheduleLocalNotification:notifyAlarm];
+//    }
+//    
+//}
+//
+//- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
+//    NSLog(@"didFailWithError: %@", error);
+//}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+	NSLog(@"didFailWithError: %@", error);
 }
 
 - (NSArray*)parseInterfaceOrientations:(NSArray*)orientations
@@ -937,6 +1022,7 @@ BOOL gSplashScreenShown = NO;
             notifyAlarm.fireDate = alertTime;
             notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
             notifyAlarm.repeatInterval = 0;
+            notifyAlarm.soundName = @"Glass.aiff";
             notifyAlarm.alertBody = @"Woohooo";
             [app scheduleLocalNotification:notifyAlarm];
         }

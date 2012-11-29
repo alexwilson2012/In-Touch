@@ -44,6 +44,8 @@
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>DGGeofencing</key>
+		<string>DGGeofencing</string>
 		<key>com.inTouch.addReminderPin</key>
 		<string>addReminderPin</string>
 		<key>Device</key>

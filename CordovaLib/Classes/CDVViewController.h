@@ -25,6 +25,8 @@
 #import "CDVCommandDelegate.h"
 #import "CDVWhitelist.h"
 
+#import <CoreLocation/CoreLocation.h>
+
 @class CDVCommandQueue;
 @class CDVCommandDelegateImpl;
 
@@ -50,6 +52,8 @@
 @property (nonatomic, readwrite, copy) NSString* startPage;
 @property (nonatomic, readonly, strong) CDVCommandQueue* commandQueue;
 @property (nonatomic, readonly, strong) CDVCommandDelegateImpl* commandDelegate;
+
+@property (nonatomic, retain) CLLocationManager *locationManager;
 
 + (NSDictionary*)getBundlePlist:(NSString*)plistName;
 + (NSString*)applicationDocumentsDirectory;

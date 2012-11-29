@@ -8,10 +8,12 @@
 
 
 #import <Cordova/CDV.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface addReminderPin : CDVPlugin
 
 - (void) nativeFunction:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 //- (void)nativeFunction:(CDVInvokedUrlCommand*)command;
+@property (nonatomic, retain) CLLocationManager *locationManager;
 
 @end
