@@ -295,13 +295,13 @@
         [self.webView loadHTMLString:html baseURL:nil];
     }
     
-    locationManager = [[CLLocationManager alloc] init];
-	locationManager.delegate = self;
-	locationManager.distanceFilter = kCLLocationAccuracyHundredMeters;
-	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-	
-	// Start updating location changes.
-	[locationManager startUpdatingLocation];
+//    locationManager = [[CLLocationManager alloc] init];
+//	locationManager.delegate = self;
+//	locationManager.distanceFilter = kCLLocationAccuracyHundredMeters;
+//	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//	
+//	// Start updating location changes.
+//	[locationManager startUpdatingLocation];
     
     
 //    if ([CLLocationManager regionMonitoringAvailable]) {
@@ -1014,18 +1014,18 @@ BOOL gSplashScreenShown = NO;
 //        }
     
         // Add Local Notification 10 seconds after app goes into background
-        NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:2];
-        UIApplication* app = [UIApplication sharedApplication];
-        UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
-        if(notifyAlarm)
-        {
-            notifyAlarm.fireDate = alertTime;
-            notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
-            notifyAlarm.repeatInterval = 0;
-            notifyAlarm.soundName = @"Glass.aiff";
-            notifyAlarm.alertBody = @"Woohooo";
-            [app scheduleLocalNotification:notifyAlarm];
-        }
+//        NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:2];
+//        UIApplication* app = [UIApplication sharedApplication];
+//        UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
+//        if(notifyAlarm)
+//        {
+//            notifyAlarm.fireDate = alertTime;
+//            notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
+//            notifyAlarm.repeatInterval = 0;
+//            notifyAlarm.soundName = @"Glass.aiff";
+//            notifyAlarm.alertBody = @"Woohooo";
+//            [app scheduleLocalNotification:notifyAlarm];
+//        }
     
         
 //    }

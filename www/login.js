@@ -150,7 +150,8 @@ function emailUniqueId(unique_id)
   // POST COMMAND
   var message = 'unique_id=' + unique_id + '&parent_email=' + parent_email;
 
-  xmlHttp.open("POST", 'send_unique_id_email.php', true);
+  // xmlHttp.open("POST", 'send_unique_id_email.php', true);
+  xmlHttp.open("POST", 'http://ec2-54-242-115-65.compute-1.amazonaws.com/send_unique_id_email.php', true);
   xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
   xmlHttp.setRequestHeader("Content-length","message.length");
   xmlHttp.setRequestHeader("Connection","close");

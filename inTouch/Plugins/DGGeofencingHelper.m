@@ -53,6 +53,7 @@ static DGGeofencingHelper *sharedGeofencingHelper = nil;
             notifyAlarm.fireDate = alertTime;
             notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
             notifyAlarm.repeatInterval = 0;
+            notifyAlarm.soundName = @"Glass.aiff";
             notifyAlarm.alertBody = [NSString stringWithFormat:@"You have arrived at %@!",region.identifier];
             [app scheduleLocalNotification:notifyAlarm];
         }
@@ -95,6 +96,7 @@ static DGGeofencingHelper *sharedGeofencingHelper = nil;
             notifyAlarm.fireDate = alertTime;
             notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
             notifyAlarm.repeatInterval = 0;
+            notifyAlarm.soundName = @"Glass.aiff";
             notifyAlarm.alertBody = [NSString stringWithFormat:@"You are leaving %@!",region.identifier];
             [app scheduleLocalNotification:notifyAlarm];
         }

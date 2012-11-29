@@ -60,9 +60,9 @@
     <button onclick="callNativePlugin('42,-78');">Click for SUCCESS!</button>
     <button onclick="callNativePlugin('error');">Click for ERROR!</button>
     <br>
-    <button onclick="test();">Click!</button>
-    <button onclick="test2();">Click2!</button>
-    <button onclick="test2();">Click3!</button>
+    <button onclick="addNewRegion('Home',15,42.053095899999995,-87.68656539999999);">Add New Region!</button>
+    <button onclick="viewRegions();">View Your Regions!</button>
+    <button onclick="startMonitoringRegions();">Start Monitoring Regions!</button>
             
 		
 	</div>
@@ -70,7 +70,7 @@
     <script type="text/javascript" src="cordova-2.2.0.js"></script>
     <script type="text/javascript" charset="utf-8">
 
-    function test3()
+    function startMonitoringRegions()
     {
         DGGeofencing.startMonitoringSignificantLocationChanges(
         function(result) { 
@@ -82,9 +82,9 @@
     );
     }
 
-    function test2()
+    function addNewRegion(name,radius,lat,lng)
     {
-        var params = {"fid": 'home2', "radius": 15, "latitude": 42, "longitude": -78};
+        var params = {"fid": name, "radius": radius, "latitude": lat, "longitude": lng};
         console.log(params);
         DGGeofencing.addRegion(
             params,
@@ -97,7 +97,7 @@
         );
     }
 
-    function test()
+    function viewRegions()
     {
         DGGeofencing.getWatchedRegionIds(
             function(result) { 

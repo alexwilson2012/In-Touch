@@ -42,20 +42,20 @@
 //        [self writeJavascript:[result toErrorCallbackString:callbackId]];
 //    }
     
-    if ([CLLocationManager regionMonitoringAvailable]) {
-        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(42.0,-78.0);
-        CLRegion *newRegion = [[CLRegion alloc] initCircularRegionWithCenter:coord
-																	  radius:1000.0
-																  identifier:[NSString stringWithFormat:@"%f, %f", 42.0, -78.0]];
-		
-		// Start monitoring the newly created region.
-		[self.locationManager startMonitoringForRegion:newRegion desiredAccuracy:kCLLocationAccuracyBest];
-		NSLog(@"HI");
-        
-	}
-	else {
-		NSLog(@"Region monitoring is not available.");
-	}
+//    if ([CLLocationManager regionMonitoringAvailable]) {
+//        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(42.0,-78.0);
+//        CLRegion *newRegion = [[CLRegion alloc] initCircularRegionWithCenter:coord
+//																	  radius:1000.0
+//																  identifier:[NSString stringWithFormat:@"%f, %f", 42.0, -78.0]];
+//		
+//		// Start monitoring the newly created region.
+//		[self.locationManager startMonitoringForRegion:newRegion desiredAccuracy:kCLLocationAccuracyBest];
+//		NSLog(@"HI");
+//        
+//	}
+//	else {
+//		NSLog(@"Region monitoring is not available.");
+//	}
 
     
 }
