@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>inTouch | Sign-Up</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <!-- Parse.com js file -->
 <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.1.8.min.js"></script>
 <!-- Google Maps api js file -->
@@ -70,6 +71,52 @@
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email' placeholder="Parent 1's Email"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='phone' placeholder="Parent 1's Cellphone"/><br>
 		<br>
+		
+		<ul class="nav nav-pills">  
+    <li class="dropdown all-camera-dropdown">  
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#">  
+            Parent 1's Carrier  
+               <b class="caret"></b>  
+           </a>  
+    <ul class="dropdown-menu">  
+    
+    <!-- -->
+    <input type="visible" name="carrier" value="" id="btn-input1" />
+		<div class="btn-group btn-group-vertical" data-toggle="buttons-radio">  
+		  <button id="att" type="button" data-toggle="button" name="option" value="att" class="btn btn">AT&T</button>
+		  <button id="verizon" type="button" data-toggle="button" name="option" value="verizon" class="btn btn">Verizon</button>
+		  <button id="tmobile" type="button" data-toggle="button" name="option" value="tmobile" class="btn btn">T-Mobile</button>
+		  <button id="sprint" type="button" data-toggle="button" name="option" value="sprint" class="btn btn">Sprint</button>
+		  <button id="virgin" type="button" data-toggle="button" name="option" value="virgin" class="btn btn">Virgin</button>
+		  <button id="nextel" type="button" data-toggle="button" name="option" value="nextel" class="btn btn">Nextel</button>
+		  <button id="alltel" type="button" data-toggle="button" name="option" value="alltel" class="btn btn">Alltel</button>
+		  <button id="uscellular" type="button" data-toggle="button" name="option" value="uscellular" class="btn btn">US Cellular</button>
+		  <button id="boost" type="button" data-toggle="button" name="option" value="boost" class="btn btn">Boost</button>
+		  <button id="powertel" type="button" data-toggle="button" name="option" value="powertel" class="btn btn">Powertel</button>
+		  <button id="qwest" type="button" data-toggle="button" name="option" value="qwest" class="btn btn">Qwest</button>
+		  <button id="metropcs" type="button" data-toggle="button" name="option" value="metropcs" class="btn btn">Metro PCS</button>
+		  <button id="suncom" type="button" data-toggle="button" name="option" value="suncom" class="btn btn">Suncom</button>
+		  <button id="tracfone" type="button" data-toggle="button" name="option" value="tracfone" class="btn btn">Tracfone</button>
+		  <script>
+		  var btns1 = ['att','verizon','tmobile','sprint','virgin','virgin','nextel','alltel','uscellular','boost','powertel','qwest',
+		  				'metropcs','suncom','tracfone'];
+		  var input1 = document.getElementById('btn-input1');
+		  for(var i = 0; i < btns1.length; i++) {
+			document.getElementById(btns1[i]).addEventListener('click', function() {
+			  input1.value = this.value;
+			});
+		  }
+		 </script>
+			  </div>
+		<!-- -->
+		
+		 </ul>  
+		</li></ul>  
+		<script type="text/javascript" src="js/jquery.js"></script>  
+		<script type="text/javascript" src="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-dropdown.js"></script>  
+			
+		<!-- 
+
 		Parent 1's Carrier
 		<input type="hidden" name="carrier" value="" id="btn-input1" />
 		<div class="btn-group" data-toggle="buttons-radio">  
@@ -98,10 +145,57 @@
 		  }
      </script>
 		  </div>
+ -->
 		  
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email2' placeholder="Parent 2's Email"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='phone2' placeholder="Parent 2's Cellphone"/><br>
 		<br>
+		<ul class="nav nav-pills">  
+    <li class="dropdown all-camera-dropdown">  
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#">  
+            Parent 2's Carrier  
+               <b class="caret"></b>  
+           </a>  
+    <ul class="dropdown-menu">  
+    
+    <!-- -->
+    <input type="visible" name="carrier2" value="" id="btn-input1b" />
+		<div class="btn-group" data-toggle="buttons-radio">  
+		  <button id="att2" type="button" data-toggle="button" name="option" value="att" class="btn btn">AT&T</button>
+		  <button id="verizon2" type="button" data-toggle="button" name="option" value="verizon" class="btn btn">Verizon</button>
+		  <button id="tmobile2" type="button" data-toggle="button" name="option" value="tmobile" class="btn btn">T-Mobile</button>
+		  <button id="sprint2" type="button" data-toggle="button" name="option" value="sprint" class="btn btn">Sprint</button>
+		  <button id="virgin2" type="button" data-toggle="button" name="option" value="virgin" class="btn btn">Virgin</button>
+		  <button id="nextel2" type="button" data-toggle="button" name="option" value="nextel" class="btn btn">Nextel</button>
+		  <button id="alltel2" type="button" data-toggle="button" name="option" value="alltel" class="btn btn">Alltel</button>
+		  <button id="uscellular2" type="button" data-toggle="button" name="option" value="uscellular" class="btn btn">US Cellular</button>
+		  <button id="boost2" type="button" data-toggle="button" name="option" value="boost" class="btn btn">Boost</button>
+		  <button id="powertel2" type="button" data-toggle="button" name="option" value="powertel" class="btn btn">Powertel</button>
+		  <button id="qwest2" type="button" data-toggle="button" name="option" value="qwest" class="btn btn">Qwest</button>
+		  <button id="metropcs2" type="button" data-toggle="button" name="option" value="metropcs" class="btn btn">Metro PCS</button>
+		  <button id="suncom2" type="button" data-toggle="button" name="option" value="suncom" class="btn btn">Suncom</button>
+		  <button id="tracfone2" type="button" data-toggle="button" name="option" value="tracfone" class="btn btn">Tracfone</button>
+		  <script>
+		  var btns1b = ['att2','verizon2','tmobile2','sprint2','virgin2','nextel2','alltel2','uscellular2','boost2','powertel2','qwest2',
+		  				'metropcs2','suncom2','tracfone2'];
+		  var input1b = document.getElementById('btn-input1b');
+		  for(var i = 0; i < btns1b.length; i++) {
+			document.getElementById(btns1b[i]).addEventListener('click', function() {
+			  input1b.value = this.value;
+			});
+		  }
+     </script>
+		  </div>
+		<!-- -->
+		
+		 </ul>  
+		</li></ul>  
+		<script type="text/javascript" src="js/jquery.js"></script>  
+		<script type="text/javascript" src="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-dropdown.js"></script>  
+			
+		
+		<!-- 
+
 		Parent 2's Carrier
 		<input type="hidden" name="carrier2" value="" id="btn-input1b" />
 		<div class="btn-group" data-toggle="buttons-radio">  
@@ -131,6 +225,7 @@
      </script>
 		  </div>
 	
+ -->
 	<br>
 	<h2>Where?</h2>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_home' placeholder="Teen's Home Address"/><br>
@@ -141,8 +236,8 @@
 	Parent 1:
 		<input type="hidden" name="text_vs_email" value="" id="btn-input2" />
 		<div class="btn-group" data-toggle="buttons-radio">  
-		  <button id="email_not" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn">Email</button>
-		  <button id="text_not" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Text</button>
+		  <button id="email_not" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn2">Email</button>
+		  <button id="text_not" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn2">Text</button>
 		</div>
 	<script>
 		  var btns2 = ['email_not', 'text_not'];
@@ -157,8 +252,8 @@
      Parent 2:
 		<input type="hidden" name="text_vs_email2" value="" id="btn-input3" />
 		<div class="btn-group" data-toggle="buttons-radio">  
-		  <button id="email_not2" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn">Email</button>
-		  <button id="text_not2" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Text</button>
+		  <button id="email_not2" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn2">Email</button>
+		  <button id="text_not2" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn2">Text</button>
 		</div>
 	<script>
 		  var btns3 = ['email_not2', 'text_not2'];
