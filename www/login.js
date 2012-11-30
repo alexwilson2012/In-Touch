@@ -13,12 +13,17 @@ function addLoginToParse(form)
 	unique_id = Math.floor(Math.random()*10000000000000);
 	login.set("unique_id", unique_id);
 	login.set("parent_name", form.parent_name.value);
+	login.set("parent_name2", form.parent_name2.value);
 	login.set("child_name", form.child_name.value);
 	login.set("email", form.email.value); 
-  parent_email = form.email.value;
+	login.set("email2", form.email2.value); 
+    parent_email = form.email.value;
 	login.set("phone", form.phone.value); 
+	login.set("phone2", form.phone2.value); 
 	login.set("text_vs_email", form.text_vs_email.value); 
+	login.set("text_vs_email2", form.text_vs_email2.value); 
 	login.set("carrier", form.carrier.value); 
+	login.set("carrier2", form.carrier2.value); 
 
   // Store the Home, Work, and School address presets, and aquire their latitude and longitude
   // Since this is a call to googles api it requires a recursive call...sorry its messy

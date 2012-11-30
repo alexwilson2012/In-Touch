@@ -62,29 +62,15 @@
 <div class="row-fluid" style="padding-top:40px;">
 	<form name='login_form' class="form-horizontal" style=" border:1px solid #eee; width:100%; ">
 	<h2>Who?</h2>
-		<input type='text' class="input-large" style="width:100%; padding:auto;" name='parent_name' placeholder="Parent Name"/><br>
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='parent_name' placeholder="Parent 1's Name"/><br>
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='parent_name2' placeholder="Parent 2's Name"/><br>
 		<input type='text' class="input-large"  style="width:100%; padding:auto;" name='child_name' placeholder="Teen Name"/><br>
 	<br>
 	<h2>What?</h2>
-		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email' placeholder="Parent's Email"/><br>
-		<input type='text' class="input-large" style="width:100%; padding:auto;" name='phone' placeholder="Parent's Cellphone"/><br>
-		<!--
-			AT&T: number@txt.att.net
-			Qwest: number@qwestmp.com
-			T-Mobile: number@tmomail.net
-			Verizon: number@vtext.com
-			Sprint: number@messaging.sprintpcs.com or number@pm.sprint.com
-			Virgin Mobile: number@vmobl.com
-			Nextel: number@messaging.nextel.com
-			Alltel: number@message.alltel.com
-			Metro PCS: number@mymetropcs.com
-			Powertel: number@ptel.com
-			Boost Mobile: number@myboostmobile.com
-			Suncom: number@tms.suncom.com
-			Tracfone: number@mmst5.tracfone.com
-			U.S. Cellular: number@email.uscc.net		
-		-->
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email' placeholder="Parent 1's Email"/><br>
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='phone' placeholder="Parent 1's Cellphone"/><br>
 		<br>
+		Parent 1's Carrier
 		<input type="hidden" name="carrier" value="" id="btn-input1" />
 		<div class="btn-group" data-toggle="buttons-radio">  
 		  <button id="att" type="button" data-toggle="button" name="option" value="att" class="btn btn">AT&T</button>
@@ -112,7 +98,38 @@
 		  }
      </script>
 		  </div>
-
+		  
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email2' placeholder="Parent 2's Email"/><br>
+		<input type='text' class="input-large" style="width:100%; padding:auto;" name='phone2' placeholder="Parent 2's Cellphone"/><br>
+		<br>
+		Parent 2's Carrier
+		<input type="hidden" name="carrier2" value="" id="btn-input1b" />
+		<div class="btn-group" data-toggle="buttons-radio">  
+		  <button id="att2" type="button" data-toggle="button" name="option" value="att" class="btn btn">AT&T</button>
+		  <button id="verizon2" type="button" data-toggle="button" name="option" value="verizon" class="btn btn">Verizon</button>
+		  <button id="tmobile2" type="button" data-toggle="button" name="option" value="tmobile" class="btn btn">T-Mobile</button>
+		  <button id="sprint2" type="button" data-toggle="button" name="option" value="sprint" class="btn btn">Sprint</button>
+		  <button id="virgin2" type="button" data-toggle="button" name="option" value="virgin" class="btn btn">Virgin</button>
+		  <button id="nextel2" type="button" data-toggle="button" name="option" value="nextel" class="btn btn">Nextel</button>
+		  <button id="alltel2" type="button" data-toggle="button" name="option" value="alltel" class="btn btn">Alltel</button>
+		  <button id="uscellular2" type="button" data-toggle="button" name="option" value="uscellular" class="btn btn">US Cellular</button>
+		  <button id="boost2" type="button" data-toggle="button" name="option" value="boost" class="btn btn">Boost</button>
+		  <button id="powertel2" type="button" data-toggle="button" name="option" value="powertel" class="btn btn">Powertel</button>
+		  <button id="qwest2" type="button" data-toggle="button" name="option" value="qwest" class="btn btn">Qwest</button>
+		  <button id="metropcs2" type="button" data-toggle="button" name="option" value="metropcs" class="btn btn">Metro PCS</button>
+		  <button id="suncom2" type="button" data-toggle="button" name="option" value="suncom" class="btn btn">Suncom</button>
+		  <button id="tracfone2" type="button" data-toggle="button" name="option" value="tracfone" class="btn btn">Tracfone</button>
+		  <script>
+		  var btns1b = ['att2','verizon2','tmobile2','sprint2','virgin2','nextel2','alltel2','uscellular2','boost2','powertel2','qwest2',
+		  				'metropcs2','suncom2','tracfone2'];
+		  var input1b = document.getElementById('btn-input1b');
+		  for(var i = 0; i < btns1b.length; i++) {
+			document.getElementById(btns1b[i]).addEventListener('click', function() {
+			  input1b.value = this.value;
+			});
+		  }
+     </script>
+		  </div>
 	
 	<br>
 	<h2>Where?</h2>
@@ -121,6 +138,7 @@
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_work' placeholder="Teen's Work Address"/><br>
 	<br>
 	<h2>How do you prefer your notifications?</h2>
+	Parent 1:
 		<input type="hidden" name="text_vs_email" value="" id="btn-input2" />
 		<div class="btn-group" data-toggle="buttons-radio">  
 		  <button id="email_not" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn">Email</button>
@@ -135,6 +153,24 @@
 			});
 		  }
      </script>
+     
+     Parent 2:
+		<input type="hidden" name="text_vs_email2" value="" id="btn-input3" />
+		<div class="btn-group" data-toggle="buttons-radio">  
+		  <button id="email_not2" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn">Email</button>
+		  <button id="text_not2" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn">Text</button>
+		</div>
+	<script>
+		  var btns3 = ['email_not2', 'text_not2'];
+		  var input3 = document.getElementById('btn-input3');
+		  for(var i = 0; i < btns3.length; i++) {
+			document.getElementById(btns3[i]).addEventListener('click', function() {
+			  input3.value = this.value;
+			});
+		  }
+     </script>
+     
+     
 		<!--<input type='checkbox' name='home' onclick='initialize()'/> Add home location--> <br> 
 		<input type='button' name='get_url' class="btn btn btn-large" style="width:100%;" value='Sign Up' onclick='addLoginToParse(this.form)'/><br>
 	</form>
