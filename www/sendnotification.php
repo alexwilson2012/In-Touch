@@ -13,6 +13,8 @@ else
 }
 
 // Execute python script on command line
+
+
 // Parent 1
 if($_POST['phone_email'] == '')
 {
@@ -23,14 +25,7 @@ else
 	echo exec('python send_email.py '.$_POST['phone_email'].' '.$_POST['Latitude'].' '.$_POST['Longitude'].' "'.$_POST['name'].'" "'.$location_name.'"');
 }
 
-// Parent 2
-if($_POST['phone_email2'] == '')
-{
-	echo exec('python send_email.py '.$_POST['email2'].' '.$_POST['Latitude'].' '.$_POST['Longitude'].' "'.$_POST['name'].'" "'.$location_name.'"');
-}
-else
-{
-	echo exec('python send_email.py '.$_POST['phone_email2'].' '.$_POST['Latitude'].' '.$_POST['Longitude'].' "'.$_POST['name'].'" "'.$location_name.'"');
-}
+
+// http://localhost/~IrsalAlsanea/Sites/sendnotification.php?Latitude=42.123213&Longitude=82.123213&email=ijas@u.northwestern.edu&email2=irsalalsanea2014@u.northwestern.edu&name=irsal&parent_name=belle&preset_locaiton=&phone_email=&phone_email2=7085436166@messaging.sprintpcs.com
 
 ?>

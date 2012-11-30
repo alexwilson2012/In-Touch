@@ -74,6 +74,7 @@ function showPosition(position)
 			 if(carrier=="tracfone"){phone_email=phone+"@txt.att.net";}
 			 if(carrier=="uscellular"){phone_email=phone+"@pm.sprint.com";}
 			 }
+		// Parent 2
 		if (object[0].attributes.text_vs_email2=="text_notification"){
 			 if(carrier2=="att"){phone_email2=phone2+"@txt.att.net";}
 			 if(carrier2=="sprint"){phone_email2=phone2+"@messaging.sprintpcs.com";}
@@ -90,9 +91,11 @@ function showPosition(position)
 			 if(carrier2=="tracfone"){phone_email2=phone2+"@txt.att.net";}
 			 if(carrier2=="uscellular"){phone_email2=phone2+"@pm.sprint.com";}
 			 }
-        var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + object[0].attributes.email+ "&email2=" + object[0].attributes.email2 + "&name=" + object[0].attributes.child_name+"&parent_name="+object[0].attributes.parent_name+"&preset_location="+preset_location+ "&phone_email=" + phone_email+ "&phone_email2=" + phone_email2;
+        var currentCoords = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + object[0].attributes.email+ "&name=" + object[0].attributes.child_name+"&parent_name="+object[0].attributes.parent_name+"&preset_location="+preset_location+ "&phone_email=" + phone_email;
+        var currentCoords2 = "Latitude=" + position.coords.latitude + "&Longitude=" + position.coords.longitude + "&email=" + object[0].attributes.email2 + "&name=" + object[0].attributes.child_name+"&parent_name="+object[0].attributes.parent_name2+"&preset_location="+preset_location+ "&phone_email=" + phone_email2;
         // document.getElementById('response').innerHTML = currentCoords;
-        sendDataToParse(object[0].attributes.text_vs_email,object[0].attributes.text_vs_email2,object[0].attributes.phone,object[0].attributes.phone2,object[0].attributes.carrier,object[0].attributes.carrier2,object[0].attributes.email,object[0].attributes.email2,position.coords.latitude,position.coords.longitude,object[0].attributes.child_name,currentCoords);
+        sendDataToParse(object[0].attributes.text_vs_email,object[0].attributes.text_vs_email2,object[0].attributes.phone,object[0].attributes.phone2,object[0].attributes.carrier,object[0].attributes.carrier2,object[0].attributes.email,object[0].attributes.email2,position.coords.latitude,position.coords.longitude,object[0].attributes.child_name,currentCoords, currentCoords2);
+		
     },
     error: function(object, error) {
         alert('error');
@@ -102,7 +105,7 @@ function showPosition(position)
   });
 }
 
-function sendDataToParse(emailVsText,emailVsText2,phone,phone2,carrier,carrier2,email,email2,latitude,longitude,name,currentCoords)
+function sendDataToParse(emailVsText,emailVsText2,phone,phone2,carrier,carrier2,email,email2,latitude,longitude,name,currentCoords,currentCoords2)
 {  
   Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
   var teen_checkin_obj = Parse.Object.extend("teen_checkin");
@@ -115,7 +118,7 @@ function sendDataToParse(emailVsText,emailVsText2,phone,phone2,carrier,carrier2,
   teen_db.set("text_vs_email",emailVsText);
   teen_db.set("phone", phone); 
   teen_db.set("carrier",carrier);
-  teen_db.set("text_vs_email2",emailVsText);
+  teen_db.set("text_vs_email2",emailVsText2);
   teen_db.set("phone2", phone); 
   teen_db.set("carrier2",carrier);
   teen_db.set("latitude", latitude);
@@ -165,6 +168,30 @@ function sendDataToParse(emailVsText,emailVsText2,phone,phone2,carrier,carrier2,
   } else {
      teen_db.set("emailId", email); 
   }
+  
+  //Insert logic cases for carrier here
+  if (emailVsText2=="text_notification"){
+     if(carrier2=="att"){phone_email2=phone2+"@txt.att.net";}
+     if(carrier2=="sprint"){phone_email2=phone2+"@messaging.sprintpcs.com";}
+     if(carrier2=="qwest"){phone_email2=phone2+"@qwestmp.com";}
+     if(carrier2=="tmobile"){phone_email2=phone2+"@tmomail.net";}
+     if(carrier2=="verizon"){phone_email2=phone2+"@vtext.com";}
+     if(carrier2=="virgin"){phone_email2=phone2+"@pm.sprint.com";}
+     if(carrier2=="nextel"){phone_email2=phone2+"@txt.att.net";}
+     if(carrier2=="alltel"){phone_email2=phone2+"@pm.sprint.com";}
+     if(carrier2=="metropcs"){phone_email2=phone2+"@txt.att.net";}
+     if(carrier2=="powertel"){phone_email2=phone2+"@pm.sprint.com";}
+     if(carrier2=="boost"){phone_email2=phone2+"@txt.att.net";}
+     if(carrier2=="suncom"){phone_email2=phone2+"@pm.sprint.com";}
+     if(carrier2=="tracfone"){phone_email2=phone2+"@txt.att.net";}
+     if(carrier2=="uscellular"){phone_email2=phone2+"@pm.sprint.com";}
+     
+     // teen_db.set("emailId", phone_email); 
+     teen_db.set("emailId", email); 
+     
+  } else {
+     teen_db.set("emailId", email); 
+  }
 
   var geocoder = new google.maps.Geocoder();
   var latlng = new google.maps.LatLng(parseFloat(latitude),parseFloat(longitude));
@@ -174,8 +201,10 @@ function sendDataToParse(emailVsText,emailVsText2,phone,phone2,carrier,carrier2,
         teen_db.save(null, {
         success: function(teen_db) {
             currentCoords = currentCoords+"&address="+results[0].formatted_address;
+            currentCoords2 = currentCoords2+"&address="+results[0].formatted_address;
             // If everything is successul, send email
             sendNotification(currentCoords);
+            sendNotification(currentCoords2);
         }
         });
     } 
