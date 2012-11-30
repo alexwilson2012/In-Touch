@@ -70,11 +70,10 @@
 	<h2>What?</h2>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email' placeholder="Parent 1's Email"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='phone' placeholder="Parent 1's Cellphone"/><br>
-		<br>
 		
-	<ul class="nav nav-pills" style="">  
-    <li class="dropdown all-camera-dropdown">  
-           <a class="dropdown-toggle" data-toggle="dropdown" href="#">  
+	<ul class="nav nav-pills" style="width:93% !important; margin-bottom: 0px;">  
+    <li class="dropdown all-camera-dropdown" style="width:100% !important;">  
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="width:100% !important; text-align: center; background-color:#eee;">  
             Parent 1's Carrier  
                <b class="caret"></b>  
            </a>  
@@ -115,7 +114,36 @@
 		</li></ul>  
 		<script type="text/javascript" src="js/jquery.js"></script>  
 		<script type="text/javascript" src="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-dropdown.js"></script>  
-			
+		<ul class="nav nav-pills" style="width:93% !important;">  
+    <li class="dropdown all-camera-dropdown" style="width:100% !important;">  
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="width:100% !important; text-align: center; background-color:#eee;">  
+            Parent 1 prefers getting notifications via...
+               <b class="caret"></b>  
+           </a>  
+    <ul class="dropdown-menu">  
+    
+    <!-- -->
+    <input type="hidden" name="text_vs_email" value="" id="btn-input2" />
+		<div class="btn-group" data-toggle="buttons-radio">  
+		  <button id="email_not" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn2">Email</button>
+		  <button id="text_not" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn2">Text</button>
+		</div>
+	<script>
+		  var btns2 = ['email_not', 'text_not'];
+		  var input = document.getElementById('btn-input2');
+		  for(var i = 0; i < btns2.length; i++) {
+			document.getElementById(btns2[i]).addEventListener('click', function() {
+			  input.value = this.value;
+			});
+		  }
+     </script>
+	<!-- -->
+		
+		 </ul>  
+		</li></ul>  
+		<script type="text/javascript" src="js/jquery.js"></script>  
+		<script type="text/javascript" src="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-dropdown.js"></script>  
+		
 		<!-- 
 
 		Parent 1's Carrier
@@ -150,10 +178,10 @@
 		  
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email2' placeholder="Parent 2's Email"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='phone2' placeholder="Parent 2's Cellphone"/><br>
-		<br>
-		<ul class="nav nav-pills">  
-    <li class="dropdown all-camera-dropdown">  
-           <a class="dropdown-toggle" data-toggle="dropdown" href="#">  
+
+		<ul class="nav nav-pills" style="width:93% !important; margin-bottom: 0px;">  
+    <li class="dropdown all-camera-dropdown" style="width:100% !important;">  
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="width:100% !important; text-align: center; background-color:#eee;">  
             Parent 2's Carrier  
                <b class="caret"></b>  
            </a>  
@@ -194,8 +222,42 @@
 		</li></ul>  
 		<script type="text/javascript" src="js/jquery.js"></script>  
 		<script type="text/javascript" src="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-dropdown.js"></script>  
-			
 		
+		
+	
+		<ul class="nav nav-pills" style="width:93% !important;">  
+    <li class="dropdown all-camera-dropdown" style="width:100% !important;">  
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="width:100% !important; text-align: center; background-color:#eee;">  
+            Parent 2 prefers getting notifications via...
+               <b class="caret"></b>  
+           </a>  
+    <ul class="dropdown-menu">  
+    
+    <!-- -->
+
+		<input type="hidden" name="text_vs_email2" value="" id="btn-input3" />
+		<div class="btn-group" data-toggle="buttons-radio">  
+		  <button id="email_not2" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn2">Email</button>
+		  <button id="text_not2" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn2">Text</button>
+		</div>
+	<script>
+		  var btns3 = ['email_not2', 'text_not2'];
+		  var input3 = document.getElementById('btn-input3');
+		  for(var i = 0; i < btns3.length; i++) {
+			document.getElementById(btns3[i]).addEventListener('click', function() {
+			  input3.value = this.value;
+			});
+		  }
+     </script>
+  
+	<!-- -->
+		
+		 </ul>  
+		</li></ul>  
+		<script type="text/javascript" src="js/jquery.js"></script>  
+		<script type="text/javascript" src="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-dropdown.js"></script>
+	
+     
 		<!-- 
 
 		Parent 2's Carrier
@@ -228,44 +290,13 @@
 		  </div>
 	
  -->
-	<br>
+
 	<h2>Where?</h2>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_home' placeholder="Teen's Home Address"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_school' placeholder="Teen's School Address"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_work' placeholder="Teen's Work Address"/><br>
-	<br>
-	<h2>How do you prefer your notifications?</h2>
-	Parent 1:
-		<input type="hidden" name="text_vs_email" value="" id="btn-input2" />
-		<div class="btn-group" data-toggle="buttons-radio">  
-		  <button id="email_not" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn2">Email</button>
-		  <button id="text_not" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn2">Text</button>
-		</div>
-	<script>
-		  var btns2 = ['email_not', 'text_not'];
-		  var input = document.getElementById('btn-input2');
-		  for(var i = 0; i < btns2.length; i++) {
-			document.getElementById(btns2[i]).addEventListener('click', function() {
-			  input.value = this.value;
-			});
-		  }
-     </script>
-     
-     Parent 2:
-		<input type="hidden" name="text_vs_email2" value="" id="btn-input3" />
-		<div class="btn-group" data-toggle="buttons-radio">  
-		  <button id="email_not2" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn2">Email</button>
-		  <button id="text_not2" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn2">Text</button>
-		</div>
-	<script>
-		  var btns3 = ['email_not2', 'text_not2'];
-		  var input3 = document.getElementById('btn-input3');
-		  for(var i = 0; i < btns3.length; i++) {
-			document.getElementById(btns3[i]).addEventListener('click', function() {
-			  input3.value = this.value;
-			});
-		  }
-     </script>
+	
+	
      
      
 		<!--<input type='checkbox' name='home' onclick='initialize()'/> Add home location--> <br> 
