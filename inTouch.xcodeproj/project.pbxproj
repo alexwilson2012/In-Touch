@@ -45,31 +45,6 @@
 		765B5D151667215200F9721C /* DGGeofencing.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B5D141667215200F9721C /* DGGeofencing.m */; };
 		765B5D181667217900F9721C /* DGGeofencingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B5D171667217900F9721C /* DGGeofencingHelper.m */; };
 		766169AF1665E17B002D9683 /* addReminderPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 766169AE1665E17B002D9683 /* addReminderPin.m */; };
-		766169F81665F8D5002D9683 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 766169DB1665F8D5002D9683 /* InfoPlist.strings */; };
-		766169F91665F8D5002D9683 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 766169DD1665F8D5002D9683 /* MainWindow.xib */; };
-		766169FA1665F8D5002D9683 /* RegionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 766169DF1665F8D5002D9683 /* RegionsViewController.xib */; };
-		766169FB1665F8D5002D9683 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 766169E01665F8D5002D9683 /* Default.png */; };
-		766169FC1665F8D5002D9683 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 766169E11665F8D5002D9683 /* Default@2x.png */; };
-		766169FD1665F8D5002D9683 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 766169E21665F8D5002D9683 /* Icon-72.png */; };
-		766169FE1665F8D5002D9683 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 766169E31665F8D5002D9683 /* Icon-Small-50.png */; };
-		766169FF1665F8D5002D9683 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 766169E41665F8D5002D9683 /* Icon-Small.png */; };
-		76616A001665F8D5002D9683 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 766169E51665F8D5002D9683 /* Icon-Small@2x.png */; };
-		76616A011665F8D5002D9683 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 766169E61665F8D5002D9683 /* Icon.png */; };
-		76616A021665F8D5002D9683 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 766169E71665F8D5002D9683 /* Icon@2x.png */; };
-		76616A031665F8D5002D9683 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 766169E81665F8D5002D9683 /* iTunesArtwork */; };
-		76616A041665F8D5002D9683 /* RemoveRegion.png in Resources */ = {isa = PBXBuildFile; fileRef = 766169E91665F8D5002D9683 /* RemoveRegion.png */; };
-		76616A051665F8D5002D9683 /* RemoveRegion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 766169EA1665F8D5002D9683 /* RemoveRegion@2x.png */; };
-		76616A061665F8D5002D9683 /* main.m in Resources */ = {isa = PBXBuildFile; fileRef = 766169EC1665F8D5002D9683 /* main.m */; };
-		76616A071665F8D5002D9683 /* RegionAnnotation.h in Resources */ = {isa = PBXBuildFile; fileRef = 766169ED1665F8D5002D9683 /* RegionAnnotation.h */; };
-		76616A081665F8D5002D9683 /* RegionAnnotation.m in Resources */ = {isa = PBXBuildFile; fileRef = 766169EE1665F8D5002D9683 /* RegionAnnotation.m */; };
-		76616A091665F8D5002D9683 /* RegionAnnotationView.h in Resources */ = {isa = PBXBuildFile; fileRef = 766169EF1665F8D5002D9683 /* RegionAnnotationView.h */; };
-		76616A0A1665F8D5002D9683 /* RegionAnnotationView.m in Resources */ = {isa = PBXBuildFile; fileRef = 766169F01665F8D5002D9683 /* RegionAnnotationView.m */; };
-		76616A0B1665F8D5002D9683 /* Regions-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 766169F11665F8D5002D9683 /* Regions-Info.plist */; };
-		76616A0C1665F8D5002D9683 /* Regions-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = 766169F21665F8D5002D9683 /* Regions-Prefix.pch */; };
-		76616A0D1665F8D5002D9683 /* RegionsAppDelegate.h in Resources */ = {isa = PBXBuildFile; fileRef = 766169F31665F8D5002D9683 /* RegionsAppDelegate.h */; };
-		76616A0E1665F8D5002D9683 /* RegionsAppDelegate.m in Resources */ = {isa = PBXBuildFile; fileRef = 766169F41665F8D5002D9683 /* RegionsAppDelegate.m */; };
-		76616A0F1665F8D5002D9683 /* RegionsViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = 766169F51665F8D5002D9683 /* RegionsViewController.h */; };
-		76616A101665F8D5002D9683 /* RegionsViewController.m in Resources */ = {isa = PBXBuildFile; fileRef = 766169F61665F8D5002D9683 /* RegionsViewController.m */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 /* End PBXBuildFile section */
 
@@ -136,31 +111,6 @@
 		765B5D171667217900F9721C /* DGGeofencingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGGeofencingHelper.m; sourceTree = "<group>"; };
 		766169AD1665E17B002D9683 /* addReminderPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addReminderPin.h; sourceTree = "<group>"; };
 		766169AE1665E17B002D9683 /* addReminderPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addReminderPin.m; sourceTree = "<group>"; };
-		766169DA1665F8D5002D9683 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		766169DC1665F8D5002D9683 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		766169DE1665F8D5002D9683 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RegionsViewController.xib; sourceTree = "<group>"; };
-		766169E01665F8D5002D9683 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		766169E11665F8D5002D9683 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		766169E21665F8D5002D9683 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		766169E31665F8D5002D9683 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
-		766169E41665F8D5002D9683 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
-		766169E51665F8D5002D9683 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		766169E61665F8D5002D9683 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		766169E71665F8D5002D9683 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		766169E81665F8D5002D9683 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
-		766169E91665F8D5002D9683 /* RemoveRegion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RemoveRegion.png; sourceTree = "<group>"; };
-		766169EA1665F8D5002D9683 /* RemoveRegion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RemoveRegion@2x.png"; sourceTree = "<group>"; };
-		766169EC1665F8D5002D9683 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		766169ED1665F8D5002D9683 /* RegionAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionAnnotation.h; sourceTree = "<group>"; };
-		766169EE1665F8D5002D9683 /* RegionAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionAnnotation.m; sourceTree = "<group>"; };
-		766169EF1665F8D5002D9683 /* RegionAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionAnnotationView.h; sourceTree = "<group>"; };
-		766169F01665F8D5002D9683 /* RegionAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionAnnotationView.m; sourceTree = "<group>"; };
-		766169F11665F8D5002D9683 /* Regions-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Regions-Info.plist"; sourceTree = "<group>"; };
-		766169F21665F8D5002D9683 /* Regions-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Regions-Prefix.pch"; sourceTree = "<group>"; };
-		766169F31665F8D5002D9683 /* RegionsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionsAppDelegate.h; sourceTree = "<group>"; };
-		766169F41665F8D5002D9683 /* RegionsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionsAppDelegate.m; sourceTree = "<group>"; };
-		766169F51665F8D5002D9683 /* RegionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionsViewController.h; sourceTree = "<group>"; };
-		766169F61665F8D5002D9683 /* RegionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionsViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* inTouch-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "inTouch-Info.plist"; path = "../inTouch-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -306,7 +256,6 @@
 				765B5D171667217900F9721C /* DGGeofencingHelper.m */,
 				765B5D131667215200F9721C /* DGGeofencing.h */,
 				765B5D141667215200F9721C /* DGGeofencing.m */,
-				766169F71665F8D5002D9683 /* Regions */,
 				766169AD1665E17B002D9683 /* addReminderPin.h */,
 				766169AE1665E17B002D9683 /* addReminderPin.m */,
 			);
@@ -352,47 +301,6 @@
 				30A0434614DC770100060A13 /* Localizable.strings */,
 			);
 			path = se.lproj;
-			sourceTree = "<group>";
-		};
-		766169EB1665F8D5002D9683 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				766169E01665F8D5002D9683 /* Default.png */,
-				766169E11665F8D5002D9683 /* Default@2x.png */,
-				766169E21665F8D5002D9683 /* Icon-72.png */,
-				766169E31665F8D5002D9683 /* Icon-Small-50.png */,
-				766169E41665F8D5002D9683 /* Icon-Small.png */,
-				766169E51665F8D5002D9683 /* Icon-Small@2x.png */,
-				766169E61665F8D5002D9683 /* Icon.png */,
-				766169E71665F8D5002D9683 /* Icon@2x.png */,
-				766169E81665F8D5002D9683 /* iTunesArtwork */,
-				766169E91665F8D5002D9683 /* RemoveRegion.png */,
-				766169EA1665F8D5002D9683 /* RemoveRegion@2x.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
-		766169F71665F8D5002D9683 /* Regions */ = {
-			isa = PBXGroup;
-			children = (
-				766169DB1665F8D5002D9683 /* InfoPlist.strings */,
-				766169DD1665F8D5002D9683 /* MainWindow.xib */,
-				766169DF1665F8D5002D9683 /* RegionsViewController.xib */,
-				766169EB1665F8D5002D9683 /* Images */,
-				766169EC1665F8D5002D9683 /* main.m */,
-				766169ED1665F8D5002D9683 /* RegionAnnotation.h */,
-				766169EE1665F8D5002D9683 /* RegionAnnotation.m */,
-				766169EF1665F8D5002D9683 /* RegionAnnotationView.h */,
-				766169F01665F8D5002D9683 /* RegionAnnotationView.m */,
-				766169F11665F8D5002D9683 /* Regions-Info.plist */,
-				766169F21665F8D5002D9683 /* Regions-Prefix.pch */,
-				766169F31665F8D5002D9683 /* RegionsAppDelegate.h */,
-				766169F41665F8D5002D9683 /* RegionsAppDelegate.m */,
-				766169F51665F8D5002D9683 /* RegionsViewController.h */,
-				766169F61665F8D5002D9683 /* RegionsViewController.m */,
-			);
-			name = Regions;
-			path = ../../CordovaLib/Regions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,31 +395,6 @@
 				3088BBC1154F3926009F9C59 /* Default@2x~iphone.png in Resources */,
 				3088BBC2154F3926009F9C59 /* Default~iphone.png in Resources */,
 				D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */,
-				766169F81665F8D5002D9683 /* InfoPlist.strings in Resources */,
-				766169F91665F8D5002D9683 /* MainWindow.xib in Resources */,
-				766169FA1665F8D5002D9683 /* RegionsViewController.xib in Resources */,
-				766169FB1665F8D5002D9683 /* Default.png in Resources */,
-				766169FC1665F8D5002D9683 /* Default@2x.png in Resources */,
-				766169FD1665F8D5002D9683 /* Icon-72.png in Resources */,
-				766169FE1665F8D5002D9683 /* Icon-Small-50.png in Resources */,
-				766169FF1665F8D5002D9683 /* Icon-Small.png in Resources */,
-				76616A001665F8D5002D9683 /* Icon-Small@2x.png in Resources */,
-				76616A011665F8D5002D9683 /* Icon.png in Resources */,
-				76616A021665F8D5002D9683 /* Icon@2x.png in Resources */,
-				76616A031665F8D5002D9683 /* iTunesArtwork in Resources */,
-				76616A041665F8D5002D9683 /* RemoveRegion.png in Resources */,
-				76616A051665F8D5002D9683 /* RemoveRegion@2x.png in Resources */,
-				76616A061665F8D5002D9683 /* main.m in Resources */,
-				76616A071665F8D5002D9683 /* RegionAnnotation.h in Resources */,
-				76616A081665F8D5002D9683 /* RegionAnnotation.m in Resources */,
-				76616A091665F8D5002D9683 /* RegionAnnotationView.h in Resources */,
-				76616A0A1665F8D5002D9683 /* RegionAnnotationView.m in Resources */,
-				76616A0B1665F8D5002D9683 /* Regions-Info.plist in Resources */,
-				76616A0C1665F8D5002D9683 /* Regions-Prefix.pch in Resources */,
-				76616A0D1665F8D5002D9683 /* RegionsAppDelegate.h in Resources */,
-				76616A0E1665F8D5002D9683 /* RegionsAppDelegate.m in Resources */,
-				76616A0F1665F8D5002D9683 /* RegionsViewController.h in Resources */,
-				76616A101665F8D5002D9683 /* RegionsViewController.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,30 +472,6 @@
 				30A0434714DC770100060A13 /* se */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		766169DB1665F8D5002D9683 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				766169DA1665F8D5002D9683 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		766169DD1665F8D5002D9683 /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				766169DC1665F8D5002D9683 /* en */,
-			);
-			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-		766169DF1665F8D5002D9683 /* RegionsViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				766169DE1665F8D5002D9683 /* en */,
-			);
-			name = RegionsViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

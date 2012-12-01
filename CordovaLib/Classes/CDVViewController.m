@@ -21,10 +21,6 @@
 #import "CDV.h"
 #import "CDVCommandQueue.h"
 #import "CDVCommandDelegateImpl.h"
-//#import "RegionsAppDelegate.h"
-//#import "RegionsViewController.h"
-//#import "RegionAnnotationView.h"
-//#import "RegionAnnotation.h"
 
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
 
@@ -295,34 +291,6 @@
         [self.webView loadHTMLString:html baseURL:nil];
     }
     
-//    locationManager = [[CLLocationManager alloc] init];
-//	locationManager.delegate = self;
-//	locationManager.distanceFilter = kCLLocationAccuracyHundredMeters;
-//	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-//	
-//	// Start updating location changes.
-//	[locationManager startUpdatingLocation];
-    
-    
-//    if ([CLLocationManager regionMonitoringAvailable]) {
-//        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(42.0,-78.0);
-//        CLRegion *newRegion = [[CLRegion alloc] initCircularRegionWithCenter:coord
-//																	  radius:1000.0
-//																  identifier:[NSString stringWithFormat:@"%f, %f", 42.0, -78.0]];
-//        //        END HERE
-//		
-//		// Create an annotation to show where the region is located on the map.
-//
-//		
-//		// Start monitoring the newly created region.
-//		[locationManager startMonitoringForRegion:newRegion desiredAccuracy:kCLLocationAccuracyBest];
-//		
-//    
-//	}
-//	else {
-//		NSLog(@"Region monitoring is not available.");
-//	}
-    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -330,50 +298,6 @@
     NSLog(@"Update Location: %@", locations);
 }
 
-//- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region  {
-//	NSString *event = [NSString stringWithFormat:@"didEnterRegion %@ at %@", region.identifier, [NSDate date]];
-//    
-//    NSLog(@"enter");
-//    
-//    // Add Local Notification when user enters region
-//    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:1];
-//    UIApplication* app = [UIApplication sharedApplication];
-//    UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
-//    if(notifyAlarm)
-//    {
-//        notifyAlarm.fireDate = alertTime;
-//        notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
-//        notifyAlarm.repeatInterval = 0;
-//        notifyAlarm.alertBody = [NSString stringWithFormat:@"You have arrived at %@!",region.identifier];
-//        [app scheduleLocalNotification:notifyAlarm];
-//    }
-//	
-//}
-//
-//
-//- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
-//	NSString *event = [NSString stringWithFormat:@"didExitRegion %@ at %@", region.identifier, [NSDate date]];
-//	
-//    NSLog(@"exit");
-//    
-//    // Add Local Notification when user enters region
-//    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:1];
-//    UIApplication* app = [UIApplication sharedApplication];
-//    UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
-//    if(notifyAlarm)
-//    {
-//        notifyAlarm.fireDate = alertTime;
-//        notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
-//        notifyAlarm.repeatInterval = 0;
-//        notifyAlarm.alertBody = [NSString stringWithFormat:@"You are leaving %@!",region.identifier];
-//        [app scheduleLocalNotification:notifyAlarm];
-//    }
-//    
-//}
-//
-//- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
-//    NSLog(@"didFailWithError: %@", error);
-//}
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	NSLog(@"didFailWithError: %@", error);
@@ -983,7 +907,8 @@ BOOL gSplashScreenShown = NO;
 // This method is called to let your application know that it moved from the inactive to active state.
 - (void)onAppDidBecomeActive:(NSNotification*)notification
 {
-    // NSLog(@"%@",@"applicationDidBecomeActive");
+    NSLog(@"%@",@"applicationDidBecomeActive");
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     [self.commandDelegate evalJs:@"cordova.fireDocumentEvent('active');"];
 }
 
@@ -995,40 +920,7 @@ BOOL gSplashScreenShown = NO;
 {
     NSLog(@"App is running in the background");
     
-//    - (void)applicationDidEnterBackground:(UIApplication *)application {
-//        /*
-//         Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-//         If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
-//         */
-//        
-//        // Reset the icon badge number to zero.
-//        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-//
-//        if ([CLLocationManager significantLocationChangeMonitoringAvailable]) {
-//            // Stop normal location updates and start significant location change updates for battery efficiency.
-//            [viewController.locationManager stopUpdatingLocation];
-//            [viewController.locationManager startMonitoringSignificantLocationChanges];
-//        }
-//        else {
-//            NSLog(@"Significant location change monitoring is not available.");
-//        }
-    
-        // Add Local Notification 10 seconds after app goes into background
-//        NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:2];
-//        UIApplication* app = [UIApplication sharedApplication];
-//        UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
-//        if(notifyAlarm)
-//        {
-//            notifyAlarm.fireDate = alertTime;
-//            notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
-//            notifyAlarm.repeatInterval = 0;
-//            notifyAlarm.soundName = @"Glass.aiff";
-//            notifyAlarm.alertBody = @"Woohooo";
-//            [app scheduleLocalNotification:notifyAlarm];
-//        }
-    
-        
-//    }
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
     // NSLog(@"%@",@"applicationDidEnterBackground");
     [self.commandDelegate evalJs:@"cordova.fireDocumentEvent('pause', null, true);" scheduledOnRunLoop:NO];

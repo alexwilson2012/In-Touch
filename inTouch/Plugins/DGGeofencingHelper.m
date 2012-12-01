@@ -57,6 +57,8 @@ static DGGeofencingHelper *sharedGeofencingHelper = nil;
             notifyAlarm.alertBody = [NSString stringWithFormat:@"You have arrived at %@!",region.identifier];
             [app scheduleLocalNotification:notifyAlarm];
         }
+        
+        [UIApplication sharedApplication].applicationIconBadgeNumber++;
     }
 }
 
@@ -88,7 +90,7 @@ static DGGeofencingHelper *sharedGeofencingHelper = nil;
         [self.webView stringByEvaluatingJavaScriptFromString:jsStatement];
         
         // Add Local Notification when user enters region
-        NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:1];
+        NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:0];
         UIApplication* app = [UIApplication sharedApplication];
         UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
         if(notifyAlarm)
@@ -100,6 +102,8 @@ static DGGeofencingHelper *sharedGeofencingHelper = nil;
             notifyAlarm.alertBody = [NSString stringWithFormat:@"You are leaving %@!",region.identifier];
             [app scheduleLocalNotification:notifyAlarm];
         }
+        
+        [UIApplication sharedApplication].applicationIconBadgeNumber++;
     }
 }
 

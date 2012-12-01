@@ -36,10 +36,10 @@
     
     <!-- <div class="nav-collapse collapse"> -->
     <ul class="nav pull-right">
-      <li><a href="login.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"login")'>Login</a></li>
-      <li><a href="index.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"index")'>Parent</a></li>
-      <li><a href="sendmylocation.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"sendmylocation")'>Teenager</a></li>
-      <li><a href='comment_email.html'  style="color: yellow;" onmouseover='this.href=document.URL.replace(/sendmylocation/,"comment_email")'>Leave a Comment</a></li>
+      <li><a href="login.html" onmouseover='this.href=document.URL.replace(/redirect/,"login")'>Login</a></li>
+      <li><a href="index.html" onmouseover='this.href=document.URL.replace(/redirect/,"index")'>Parent</a></li>
+      <li><a href="sendmylocation.html" onmouseover='this.href=document.URL.replace(/redirect/,"sendmylocation")'>Teenager</a></li>
+      <li><a href='comment_email.html'  style="color: yellow;" onmouseover='this.href=document.URL.replace(/redirect/,"comment_email")'>Leave a Comment</a></li>
     </ul>
     <!-- </div> -->
     
@@ -54,21 +54,156 @@
    
     <form name='form'>
         <input type='text' class="input-large" style="width:100%; padding:auto;" name='unique_id' placeholder="Unique ID"/>
-		<input type='button' name='get_url' class="btn btn btn-large" style="width:100%;" value='Log In' onclick='window.location="sendmylocation.html?unique_id="+this.form.unique_id.value'/><br>
+		<input type='button' name='get_url' class="btn btn btn-large" style="width:100%;" value='Log In' onclick='goToMain(this.form)'/><br>
 	</form>
 
-    <button onclick="callNativePlugin('42,-78');">Click for SUCCESS!</button>
-    <button onclick="callNativePlugin('error');">Click for ERROR!</button>
+    <!-- <button onclick="callNativePlugin('42,-78');">Click for SUCCESS!</button> -->
+    <!-- <button onclick="callNativePlugin('error');">Click for ERROR!</button> -->
     <br>
-    <button onclick="addNewRegion('Home',15,42.053095899999995,-87.68656539999999);">Add New Region!</button>
-    <button onclick="viewRegions();">View Your Regions!</button>
-    <button onclick="startMonitoringRegions();">Start Monitoring Regions!</button>
+    <!-- <button onclick="addNewRegion('Home',15,42.053095899999995,-87.68656539999999);">Add New Region!</button> -->
+    <!-- <button onclick="viewRegions();">View Your Regions!</button> -->
+    <!-- <button onclick="startMonitoringRegions();">Start Monitoring Regions!</button> -->
+    <!-- <button onclick="stopMonitoringRegions();">Stop Monitoring Regions!</button> -->
+    <!-- <button onclick="addRemovePresets(1,8020426561124);">Add Presets!</button> -->
+    <!-- <button onclick="addRemovePresets(0,8020426561124);">Remove Presets!</button> -->
+    <!-- <button onclick="testWrite();">Test Writer</button> -->
+    <div id='test'></div>
             
 		
 	</div>
     <script type="text/javascript" src="DGGeofencing.js"></script>
     <script type="text/javascript" src="cordova-2.2.0.js"></script>
     <script type="text/javascript" charset="utf-8">
+
+    var unique_id;
+
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+    }
+    function gotFS(fileSystem) {
+        fileSystem.root.getFile("unique_id.txt", {create: true, exclusive: false}, gotFileEntry2, fail);
+    }
+    function gotFileEntry(fileEntry) {
+        fileEntry.createWriter(gotFileWriter, fail);
+    }
+    function gotFileWriter(writer) {
+        writer.onwriteend = function(evt) {
+            console.log("contents of file now 'some sample text'");
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+        };
+        writer.write(unique_id);
+        // writer.onwriteend = function(evt){
+        // window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS2, fail);
+    }
+    function fail(error) {
+        console.log(error.code);
+    }
+
+    function gotFS2(fileSystem) {
+        fileSystem.root.getFile("unique_id.txt", null, gotFileEntry, fail);
+    }
+
+    function gotFileEntry2(fileEntry) {
+        fileEntry.file(gotFile2, fail);
+    }
+
+    function gotFile2(file){
+        readAsText(file);
+    }
+
+    function readAsText(file) {
+        var reader = new FileReader();
+        reader.onloadend = function(evt) {
+            console.log("Read as text");
+            console.log(evt.target.result);
+            if(evt.target.result == '')
+            {
+                console.log("No date in file");
+            }
+            else
+            {
+                console.log("Data in file: " + evt.target.result);
+                addRemovePresets(1,evt.target.result);
+            }
+        };
+        reader.readAsText(file);
+    }
+
+
+
+    function goToMain(form)
+    {
+        // 4997851550579
+        unique_id = form.unique_id.value;
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS2, fail);
+        // addRemovePresets(1,form.unique_id.value);
+    }
+
+    function addRemovePresets(add_remove,unique_id)
+    {
+        Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
+
+        // Using QUERY.FIND() command to get multiple entries from a parse.com query
+        var user_login_obj = Parse.Object.extend("user_login");
+        var query = new Parse.Query(user_login_obj);
+
+        query.equalTo("unique_id", parseInt(unique_id));
+        query.find({
+        success: function(object) {
+            if(add_remove == 1)
+            {
+                if(object[0].attributes.school_address != null)
+                {
+                    // document.getElementById('test').innerHTML = "SCHOOL<BR>LAT: "+object[0].attributes.school_lat+"<br>LONG: "+object[0].attributes.school_lng;
+                    addNewRegion('School',15,object[0].attributes.school_lat,object[0].attributes.school_lng);
+                }
+                if(object[0].attributes.home_address != null)
+                {
+                    // document.getElementById('test').innerHTML = "Home<BR>LAT: "+object[0].attributes.home_lat+"<br>LONG: "+object[0].attributes.home_lng;
+                    addNewRegion('Home',15,object[0].attributes.home_lat,object[0].attributes.home_lng);
+                }
+                if(object[0].attributes.work_address != '')
+                {
+                    // document.getElementById('test').innerHTML = "Work<BR>LAT: "+object[0].attributes.school_lat+"<br>LONG: "+object[0].attributes.school_lng;
+                    addNewRegion('Work',15,object[0].attributes.work_lat,object[0].attributes.work_lng);
+                }
+                startMonitoringRegions();
+            }
+            else
+            {
+                if(object[0].attributes.school_address != null)
+                {
+                    // document.getElementById('test').innerHTML = "SCHOOL<BR>LAT: "+object[0].attributes.school_lat+"<br>LONG: "+object[0].attributes.school_lng;
+                    deleteRegion('School',object[0].attributes.school_lat,object[0].attributes.school_lng);
+                }
+                if(object[0].attributes.home_address != null)
+                {
+                    // document.getElementById('test').innerHTML = "Home<BR>LAT: "+object[0].attributes.home_lat+"<br>LONG: "+object[0].attributes.home_lng;
+                    deleteRegion('Home',object[0].attributes.home_lat,object[0].attributes.home_lng);
+                }
+                if(object[0].attributes.work_address != '')
+                {
+                    // document.getElementById('test').innerHTML = "Work<BR>LAT: "+object[0].attributes.school_lat+"<br>LONG: "+object[0].attributes.school_lng;
+                    deleteRegion('Work',object[0].attributes.work_lat,object[0].attributes.work_lng);
+                }     
+                stopMonitoringRegions();     
+            }
+
+            window.location="sendmylocation.html?unique_id="+unique_id;
+
+            },
+        error: function(object, error) {
+            alert('error');
+          // The object was not retrieved successfully.
+          // error is a Parse.Error with an error code and description.
+            }
+        });
+    }
 
     function startMonitoringRegions()
     {
@@ -78,6 +213,18 @@
         },
         function(error) {  
             console.log("failed to monitor location changes");   
+        }
+    );
+    }
+
+    function stopMonitoringRegions()
+    {
+        DGGeofencing.stopMonitoringSignificantLocationChanges(
+        function(result) { 
+            console.log("Stop Location Monitor Success: " + result);                   
+        },
+        function(error) {  
+            console.log("failed to stop monitor location changes");   
         }
     );
     }
@@ -93,6 +240,20 @@
             },
             function(error) {   
                 alert("failed to add region");
+            }
+        );
+    }
+
+    function deleteRegion(name,lat,lng)
+    {
+        var params = {"fid": name, "latitude": lat, "longitude": lng};
+        DGGeofencing.removeRegion(
+            params,
+            function(result) { 
+                console.log("delete success");                   
+            },
+            function(error) {  
+                alert("failed to delete region");   
             }
         );
     }

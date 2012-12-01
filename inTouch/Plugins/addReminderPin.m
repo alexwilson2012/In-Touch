@@ -6,10 +6,6 @@
 //
 //
 
-#import "RegionsAppDelegate.h"
-#import "RegionsViewController.h"
-#import "RegionAnnotationView.h"
-#import "RegionAnnotation.h"
 #import "addReminderPin.h"
 
 @implementation addReminderPin
