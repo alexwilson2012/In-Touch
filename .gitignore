@@ -12,3 +12,5 @@ geoloqi-Geoloqi-iPhone-SDK-faf9bef/TrackerSample/.DS_Store
 *.plist
 
 native/.DS_Store
+
+.DS_Store
