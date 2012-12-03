@@ -98,11 +98,11 @@ function initializeMaps(position) {
     query.find({
                success: function(object) {
                	if(object[0] == null)
-			    {
-			    	// Child has not checked in yet, or hasn't checked in recently
-			    	alert(child_name+" hasn't checked in recently");
-			    	// Link to call, text, or email child_name???
-			    }
+      			    {
+      			    	// Child has not checked in yet, or hasn't checked in recently
+      			    	alert(child_name+" hasn't checked in recently");
+      			    	// Link to call, text, or email child_name???
+      			    }
 
 
                // The object was retrieved successfully.
@@ -147,17 +147,23 @@ function initializeMaps(position) {
                // alert(name_array);
                
                    var myOptions = {
-                   // center: new google.maps.LatLng(42, -78),
                    mapTypeId: google.maps.MapTypeId.ROADMAP,
                    mapTypeControl: false
                    };
                    var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
                    var infowindow = new google.maps.InfoWindow();
                    var marker, i;
-                   var bounds = new google.maps.LatLngBounds(
+                   if(mapsArray.length == 0)
+                    {
+                      // If no recent checkins, show users current location on map, not atlantic ocean...
+                      var bounds = new google.maps.LatLngBounds(
                         new google.maps.LatLng(position.coords.latitude - .1,position.coords.longitude - .1),
-                        new google.maps.LatLng(position.coords.latitude + .1,position.coords.longitude + .1)
-                    );
+                        new google.maps.LatLng(position.coords.latitude + .1,position.coords.longitude + .1))
+                    }
+                    else
+                    {
+                      var bounds = new google.maps.LatLngBounds()
+                    }
                    
                    for (i = 0; i < mapsArray.length; i++) {
                    var pos = new google.maps.LatLng(mapsArray[i][1], mapsArray[i][2]);
@@ -188,6 +194,8 @@ function initializeMaps(position) {
                      }
                      })(marker, i));
                    }
+                   // USE THIS TO CHANGE BOUNDS
+                   // alert(bounds.ca.b)
                    map.fitBounds(bounds);
                
                
