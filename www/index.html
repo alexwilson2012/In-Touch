@@ -34,10 +34,17 @@
 <script type="text/javascript">
 
 var userEmail;
-var child_name
+var child_name;
+var form_hold;
+var map_hold;
+var what_screen = 'map';
 
 function initializeUniqueId()
 {
+  document.getElementById('form').style.display = 'inline';
+  form_hold = document.getElementById('form').innerHTML;
+  document.getElementById('form').style.display = 'none';
+  map_hold = document.getElementById('main_content').innerHTML;
 	var params = {};
 	  window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
 	    params[key] = value;
@@ -210,6 +217,19 @@ function initializeMaps(position) {
 	
 }
 
+function showSettings()
+{
+  if(what_screen == 'map')
+  {
+    document.getElementById('main_content').innerHTML = form_hold;
+    what_screen = 'form';
+  }
+  else
+  {
+    // Reload page, this will call new settings from DB?
+    window.location.href = window.location;
+  }
+}
 
 function toHex(number, min)
 {
@@ -260,6 +280,7 @@ function toHex(number, min)
 					<li><a href="index.html" onmouseover='this.href=document.URL.replace(/index/,"index")'>Parent</a></li>
 					<li><a href="sendmylocation.html" onmouseover='this.href=document.URL.replace(/index/,"sendmylocation")'>Teenager</a></li>
 					<li><a href='comment_email.html' style="color: yellow;" onmouseover='this.href=document.URL.replace(/index/,"comment_email")'>Leave a Comment</a></li>
+          <li><a style="color: white;" onmouseover='this.style.cursor="pointer"' onclick='showSettings()'>Change settings</a></li>
 				</ul>
 			<!-- </div> -->
 		
@@ -267,12 +288,171 @@ function toHex(number, min)
 	</div>
 </div>
 
-
+<div id='main_content'>
 <!-- MAIN CONTENT -->
 <!--<div class="container content container-fluid" id="home"> -->
 <div id="map_canvas" style="height:500px; margin-top:40px;"></div>
 
 <div id='legend'>Legend<br></div>
+
+</div>
+<div id='form' style='display:none'>
+<div class="row-fluid" style="padding-top:10px;">
+  <form name='login_form' class="form-horizontal" style="width:100%; ">
+  <h2>Who?</h2>
+    <input type='text' class="input-large" style="width:100%; padding:auto;" name='parent_name' placeholder="Parent 1's Name"/><br>
+    <input type='text' class="input-large" style="width:100%; padding:auto;" name='parent_name2' placeholder="Parent 2's Name"/><br>
+    <input type='text' class="input-large"  style="width:100%; padding:auto;" name='child_name' placeholder="Teen Name"/><br>
+  <br>
+  <h2>What?</h2>
+    <input type='text' class="input-large" style="width:100%; padding:auto;" name='email' placeholder="Parent 1's Email"/><br>
+    <input type='text' class="input-large" style="width:100%; padding:auto;" name='phone' placeholder="Parent 1's Cellphone"/><br>
+    
+  <ul class="nav nav-pills" style="width:93% !important; margin-bottom: 0px;">  
+    <li class="dropdown all-camera-dropdown" style="width:100% !important;">  
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="width:100% !important; text-align: center; background-color:#eee;"> 
+              Parent 1's Carrier  
+               <b class="caret"></b>  
+           </a>  
+    <ul class="dropdown-menu">  
+
+    <input type="hidden" name="carrier" value="" id="btn-input1" />
+    <div class="btn-group btn-group-vertical" data-toggle="buttons-radio">  
+      <button id="att" type="button" data-toggle="button" name="option" value="att" class="btn btn">AT&T</button>
+      <button id="verizon" type="button" data-toggle="button" name="option" value="verizon" class="btn btn">Verizon</button>
+      <button id="tmobile" type="button" data-toggle="button" name="option" value="tmobile" class="btn btn">T-Mobile</button>
+      <button id="sprint" type="button" data-toggle="button" name="option" value="sprint" class="btn btn">Sprint</button>
+      <button id="virgin" type="button" data-toggle="button" name="option" value="virgin" class="btn btn">Virgin Mobile</button>
+      <script>
+      var btns1 = ['att','verizon','tmobile','sprint','virgin'];
+      var input1 = document.getElementById('btn-input1');
+      for(var i = 0; i < btns1.length; i++) {
+      document.getElementById(btns1[i]).addEventListener('click', function() {
+        input1.value = this.value;
+      });
+      }
+     </script>
+        </div>
+
+     </ul>  
+    </li></ul>  
+    <script type="text/javascript" src="js/jquery.js"></script>  
+    <script type="text/javascript" src="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-dropdown.js"></script>  
+    <ul class="nav nav-pills" style="width:93% !important;">  
+    <li class="dropdown all-camera-dropdown" style="width:100% !important;">  
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="width:100% !important; text-align: center; background-color:#eee;">  
+            Parent 1 prefers getting notifications via...
+               <b class="caret"></b>  
+           </a>  
+    <ul class="dropdown-menu">  
+    
+    <input type="hidden" name="text_vs_email" value="" id="btn-input2" />
+    <div class="btn-group" data-toggle="buttons-radio">  
+      <button id="email_not" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn2">Email</button>
+      <button id="text_not" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn2">Text</button>
+    </div>
+  <script>
+      var btns2 = ['email_not', 'text_not'];
+      var input = document.getElementById('btn-input2');
+      for(var i = 0; i < btns2.length; i++) {
+      document.getElementById(btns2[i]).addEventListener('click', function() {
+        input.value = this.value;
+      });
+      }
+     </script>
+    
+     </ul>  
+    </li></ul>  
+    <script type="text/javascript" src="js/jquery.js"></script>  
+    <script type="text/javascript" src="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-dropdown.js"></script>  
+      
+    <input type='text' class="input-large" style="width:100%; padding:auto;" name='email2' placeholder="Parent 2's Email"/><br>
+    <input type='text' class="input-large" style="width:100%; padding:auto;" name='phone2' placeholder="Parent 2's Cellphone"/><br>
+
+    <ul class="nav nav-pills" style="width:93% !important; margin-bottom: 0px;">  
+    <li class="dropdown all-camera-dropdown" style="width:100% !important;">  
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="width:100% !important; text-align: center; background-color:#eee;">  
+            Parent 2's Carrier  
+               <b class="caret"></b>  
+           </a>  
+    <ul class="dropdown-menu">  
+    
+    <!-- -->
+    <input type="hidden" name="carrier2" value="" id="btn-input1b" />
+    <div class="btn-group" data-toggle="buttons-radio">  
+      <button id="att2" type="button" data-toggle="button" name="option" value="att" class="btn btn">AT&T</button>
+      <button id="verizon2" type="button" data-toggle="button" name="option" value="verizon" class="btn btn">Verizon</button>
+      <button id="tmobile2" type="button" data-toggle="button" name="option" value="tmobile" class="btn btn">T-Mobile</button>
+      <button id="sprint2" type="button" data-toggle="button" name="option" value="sprint" class="btn btn">Sprint</button>
+      <button id="virgin2" type="button" data-toggle="button" name="option" value="virgin" class="btn btn">Virgin</button>
+
+      <script>
+      var btns1b = ['att2','verizon2','tmobile2','sprint2','virgin2'];
+      var input1b = document.getElementById('btn-input1b');
+      for(var i = 0; i < btns1b.length; i++) {
+      document.getElementById(btns1b[i]).addEventListener('click', function() {
+        input1b.value = this.value;
+      });
+      }
+     </script>
+      </div>
+
+    
+     </ul>  
+    </li></ul>  
+    <script type="text/javascript" src="js/jquery.js"></script>  
+    <script type="text/javascript" src="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-dropdown.js"></script>  
+    
+    
+  
+    <ul class="nav nav-pills" style="width:93% !important;">  
+    <li class="dropdown all-camera-dropdown" style="width:100% !important;">  
+           <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="width:100% !important; text-align: center; background-color:#eee;">  
+            Parent 2 prefers getting notifications via...
+               <b class="caret"></b>  
+           </a>  
+    <ul class="dropdown-menu">  
+    
+
+    <input type="hidden" name="text_vs_email2" value="" id="btn-input3" />
+    <div class="btn-group" data-toggle="buttons-radio">  
+      <button id="email_not2" type="button" data-toggle="button" name="option" value="email_notification" class="btn btn2">Email</button>
+      <button id="text_not2" type="button" data-toggle="button" name="option" value="text_notification" class="btn btn2">Text</button>
+    </div>
+  <script>
+      var btns3 = ['email_not2', 'text_not2'];
+      var input3 = document.getElementById('btn-input3');
+      for(var i = 0; i < btns3.length; i++) {
+      document.getElementById(btns3[i]).addEventListener('click', function() {
+        input3.value = this.value;
+      });
+      }
+     </script>
+  
+    
+     </ul>  
+    </li></ul>  
+    <script type="text/javascript" src="js/jquery.js"></script>  
+    <script type="text/javascript" src="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-dropdown.js"></script>
+  
+     
+  <h2>Where?</h2>
+    <input type='text' class="input-large" style="width:100%; padding:auto;" name='address_home' placeholder="Teen's Home Address"/><br>
+    <input type='text' class="input-large" style="width:100%; padding:auto;" name='address_school' placeholder="Teen's School Address"/><br>
+    <input type='text' class="input-large" style="width:100%; padding:auto;" name='address_work' placeholder="Teen's Work Address"/><br>
+  
+  
+     
+     
+    <!--<input type='checkbox' name='home' onclick='initialize()'/> Add home location--> <br> 
+    <input type='button' name='get_url' class="btn btn btn-info btn-large" style="width:100%;" value='Sign Up' onclick='addLoginToParse(this.form)'/><br>
+  </form>
+  <div id="url_results" ></div>
+  <div id='test'></div>
+  <!-- <div id="map_canvas" style="padding:auto; width: 100%; height: 450px;"></div>  -->
+
+</div>
+</div>
 
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
