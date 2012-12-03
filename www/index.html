@@ -64,7 +64,11 @@ function initializeUniqueId()
 	    {
 		    userEmail = object[0].attributes.email;
 		    child_name = object[0].attributes.child_name;
-		    initializeMaps();
+        if (navigator.geolocation)
+        {
+          navigator.geolocation.getCurrentPosition(initializeMaps);
+        }
+		    // initializeMaps();
 		}
 	},
 	error: function(object, error) {
@@ -75,25 +79,8 @@ function initializeUniqueId()
 }
 
 
-function initializeMaps() {
+function initializeMaps(position) {
     Parse.initialize("jM32k6jnO3Eb6VyLvRwxHKUbyiOmsQADopEOQAnd", "PjdQCU7hyLwoJT1K2W3ziIkG2Y77P457SHzwso2J");
-    
-    
-    // Using a QUERY.GET() command to get a single entry from parse.com
-    // var TestObject = Parse.Object.extend("TestObject");
-    // var query = new Parse.Query(TestObject);
-    // query.get("Pjow95QwjZ", {
-    //   success: function(object) {
-    //     // The object was retrieved successfully.
-    //     document.getElementById('test').innerHTML = object.attributes.name + '<br>' + Object.keys(object.attributes);
-    //     // document.getElementById('test').innerHTML = Object.keys(object);
-    //   },
-    //   error: function(object, error) {
-    //     // The object was not retrieved successfully.
-    //     // error is a Parse.Error with an error code and description.
-    //     document.getElementById('test').innerHTML = 'FAIL';
-    //   }
-    // });
     
     // Using QUERY.FIND() command to get multiple entries from a parse.com query
     var teen_checkin_obj = Parse.Object.extend("teen_checkin");
@@ -102,23 +89,6 @@ function initializeMaps() {
     // //Creating matrix of cooridinates and text
     var mapsArray = new Array ();
     
-    
-    // // Getting email from url
-    // function GetURLParameter(sParam)
-    // {
-    //     var sPageURL = window.location.search.substring(1);
-    //     var sURLVariables = sPageURL.split('&');
-    //     for (var i = 0; i < sURLVariables.length; i++)
-    //     {
-    //         var sParameterName = sURLVariables[i].split('=');
-    //         if (sParameterName[0] == sParam)
-    //         {
-    //             return sParameterName[1];
-    //         }
-    //     }
-    // }
-    // var userEmail = decodeURIComponent(GetURLParameter('email'));
-
     
     //var mapsArray = new Array();
     query.equalTo("emailId", userEmail);
@@ -177,13 +147,17 @@ function initializeMaps() {
                // alert(name_array);
                
                    var myOptions = {
+                   // center: new google.maps.LatLng(42, -78),
                    mapTypeId: google.maps.MapTypeId.ROADMAP,
                    mapTypeControl: false
                    };
                    var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
                    var infowindow = new google.maps.InfoWindow();
                    var marker, i;
-                   var bounds = new google.maps.LatLngBounds();
+                   var bounds = new google.maps.LatLngBounds(
+                        new google.maps.LatLng(position.coords.latitude - .1,position.coords.longitude - .1),
+                        new google.maps.LatLng(position.coords.latitude + .1,position.coords.longitude + .1)
+                    );
                    
                    for (i = 0; i < mapsArray.length; i++) {
                    var pos = new google.maps.LatLng(mapsArray[i][1], mapsArray[i][2]);
