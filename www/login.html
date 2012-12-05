@@ -12,6 +12,11 @@
 <script src="js/bootstrap-dropdown.js"></script>
 <script src="login.js"></script>
 
+<!-- Added support for toggle switch -->
+<!-- <link rel="stylesheet" type='text/css' href="jquery/toggle.css" />
+<script src="//code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="//code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script> -->
+
 <!-- Formatting meta stuff -->
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
@@ -73,6 +78,14 @@
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='email' placeholder="Parent 1's Email"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='phone' placeholder="Parent 1's Cellphone"/><br>
 		
+<!-- 	<div data-role="fieldcontain">
+		<label for="flip-b">Flip switch:</label>
+			<select name="slider" id="flip-b" data-role="slider">
+				<option value="text_notification">Text</option>
+				<option value="email_notification">Email</option>
+			</select> 
+		</div> -->
+
 	<ul class="nav nav-pills" style="width:93% !important; margin-bottom: 0px;">  
     <li class="dropdown all-camera-dropdown" style="width:100% !important;">  
            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="width:100% !important; text-align: center; background-color:#eee;"> 
@@ -205,12 +218,10 @@
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_home' placeholder="Teen's Home Address"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_school' placeholder="Teen's School Address"/><br>
 		<input type='text' class="input-large" style="width:100%; padding:auto;" name='address_work' placeholder="Teen's Work Address"/><br>
-	
-	
-     
+	     
      
 		<!--<input type='checkbox' name='home' onclick='initialize()'/> Add home location--> <br> 
-		<input type='button' name='get_url' class="btn btn btn-info btn-large" style="width:100%;" value='Sign Up' onclick='addLoginToParse(this.form)'/><br>
+		<input type='button' name='get_url' class="btn-info btn-large" style="width:100%;" value='Sign Up' onclick='addLoginToParse(this.form)'/><br>
 	</form>
 	<div id="url_results" ></div>
 	<div id='test'></div>
