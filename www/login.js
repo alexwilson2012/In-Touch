@@ -15,8 +15,8 @@ function addLoginToParse(form)
 	login.set("parent_name", form.parent_name.value);
 	login.set("parent_name2", form.parent_name2.value);
 	login.set("child_name", form.child_name.value);
-	login.set("email", form.email.value); 
-	login.set("email2", form.email2.value); 
+	login.set("email", form.email.value.toLowerCase()); 
+	login.set("email2", form.email2.value.toLowerCase()); 
     parent_email = form.email.value;
 	login.set("phone", form.phone.value); 
 	login.set("phone2", form.phone2.value); 
