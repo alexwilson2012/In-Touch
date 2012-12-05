@@ -78,7 +78,6 @@ function addLoginToParse(form)
             login.save(null, {
               success: function(login) {
                 emailUniqueId(unique_id);
-                window.location.href = 'index.html?unique_id='+unique_id;
                 // printUniqueURL(unique_id);
               }
             });
@@ -116,6 +115,7 @@ function emailUniqueId(unique_id)
       if(xmlHttp.readyState == 4)
       {
           document.getElementById("test").innerHTML = xmlHttp.responseText;
+          window.location.href = 'index.html?unique_id='+unique_id;
       }
   }
 
