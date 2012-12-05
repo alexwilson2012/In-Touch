@@ -77,7 +77,7 @@ function addLoginToParse(form)
             // Save all variables to pares.com
             login.save(null, {
               success: function(login) {
-                printUniqueURL(unique_id);
+                window.location.href = 'index.html?unique_id='+unique_id;
               }
             });
             }
