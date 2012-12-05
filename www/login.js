@@ -35,15 +35,17 @@ function addLoginToParse(form)
   var address_school = form.address_school.value;
   if(address_school == '')
   {
-    address_school = '1';
+    address_school = 'empty';
   }
-  else if(address_work == '')
+  
+  if(address_work == '')
   {
-    address_work = '1';
+    address_work = 'empty';
   }
-  else if(address_home == '')
+  
+  if(address_home == '')
   {
-    address_home = '1';
+    address_home = 'empty';
   }
 
   // Initialize the geocoder
@@ -78,47 +80,10 @@ function addLoginToParse(form)
                 printUniqueURL(unique_id);
               }
             });
-            } else {
-
-              // Assign addresses and latitude/longitude coordinates to parse
-            login.set("home_address", address_home);
-            login.set("work_address", address_work);
-            login.set("home_lat", latlng_home[0]);
-            login.set("home_lng", latlng_home[1]);
-            login.set("work_lat", latlng_work[0]);
-            login.set("work_lng", latlng_work[1]);
-
-                login.save(null, {
-                  success: function(login) {
-                    printUniqueURL(unique_id);
-                  }
-                });
-                return status;
             }
           });
-        } else {
-
-            // Assign addresses and latitude/longitude coordinates to parse
-            login.set("work_address", address_work);
-            login.set("work_lat", latlng_work[0]);
-            login.set("work_lng", latlng_work[1]);
-            login.save(null, {
-              success: function(login) {
-                printUniqueURL(unique_id);
-              }
-            });
-            return status;
         }
       });
-    } else {
-      // Assign addresses and latitude/longitude coordinates to parse
-            login.set("work_address", address_work);
-        login.save(null, {
-          success: function(login) {
-            printUniqueURL(unique_id);
-          }
-        });
-        return status;
     }
   });
         //var url_return_string = "<br>Your Dashboard (bookmark this):<br><a href='http://ec2-54-242-115-65.compute-1.amazonaws.com/index.html?unique_id="+unique_id+"' target='_blank'>\
