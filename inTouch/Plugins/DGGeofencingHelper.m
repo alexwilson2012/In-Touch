@@ -89,21 +89,21 @@ static DGGeofencingHelper *sharedGeofencingHelper = nil;
         NSString *jsStatement = [NSString stringWithFormat:@"DGGeofencing.regionMonitorUpdate(%@);", [dict cdvjk_JSONString]];
         [self.webView stringByEvaluatingJavaScriptFromString:jsStatement];
         
-        // Add Local Notification when user enters region
-        NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:0];
-        UIApplication* app = [UIApplication sharedApplication];
-        UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
-        if(notifyAlarm)
-        {
-            notifyAlarm.fireDate = alertTime;
-            notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
-            notifyAlarm.repeatInterval = 0;
-            notifyAlarm.soundName = @"Glass.aiff";
-            notifyAlarm.alertBody = [NSString stringWithFormat:@"You are leaving %@!",region.identifier];
-            [app scheduleLocalNotification:notifyAlarm];
-        }
-        
-        [UIApplication sharedApplication].applicationIconBadgeNumber = 1;
+//        // Add Local Notification when user enters region
+//        NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:0];
+//        UIApplication* app = [UIApplication sharedApplication];
+//        UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init];
+//        if(notifyAlarm)
+//        {
+//            notifyAlarm.fireDate = alertTime;
+//            notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
+//            notifyAlarm.repeatInterval = 0;
+//            notifyAlarm.soundName = @"Glass.aiff";
+//            notifyAlarm.alertBody = [NSString stringWithFormat:@"You are leaving %@!",region.identifier];
+//            [app scheduleLocalNotification:notifyAlarm];
+//        }
+//        
+//        [UIApplication sharedApplication].applicationIconBadgeNumber = 1;
     }
 }
 
