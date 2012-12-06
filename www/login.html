@@ -45,11 +45,18 @@
 			<a class="brand pull-left" href="">
 			inTouch | Sign-Up
 			</a>
-			<ul class="nav pull-right">
+		<!-- 	<ul class="nav pull-right">
 				<li><a href="login.html">Login</a></li>
 					<li><a href="index.html">Parent</a></li>
 					<li><a href="sendmylocation.html">Teenager</a></li>
 					<li><a style="color: yellow;" href='comment_email.html'>Leave a Comment</a></li>
+				</ul> -->
+
+			<ul class="nav pull-right">
+				<li><a href="login.html" onmouseover='this.href=document.URL.replace(/login/,"login")'>Login</a></li>
+				<li><a href="index.html" onmouseover='this.href=document.URL.replace(/login/,"index")'>Parent</a></li>
+				<li><a href="sendmylocation.html" onmouseover='this.href=document.URL.replace(/login/,"sendmylocation")'>Teenager</a></li>
+				<li><a href='comment_email.html' style="color: yellow;" onmouseover='this.href=document.URL.replace(/login/,"comment_email")'>Leave a Comment</a></li>
 				</ul>
 	
 		<!-- 	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
