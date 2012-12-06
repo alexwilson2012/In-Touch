@@ -31,11 +31,11 @@ enum DGLocationStatus {
 typedef NSInteger DGLocationStatus;
 
 enum DGLocationAccuracy {
-    DGLocationAccuracyBestForNavigation,
-    DGLocationAccuracyBest,
-    DGLocationAccuracyNearestTenMeters,
-    DGLocationAccuracyHundredMeters,
-    DGLocationAccuracyThreeKilometers
+//    DGLocationAccuracyBestForNavigation,
+    DGLocationAccuracyBest
+//    DGLocationAccuracyNearestTenMeters,
+//    DGLocationAccuracyHundredMeters,
+//    DGLocationAccuracyThreeKilometers
 };
 typedef NSInteger DGLocationAccuracy;
 

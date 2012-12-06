@@ -232,6 +232,7 @@ function showSettings()
   {
     document.getElementById('main_content').innerHTML = form_hold;
     what_screen = 'form';
+    document.getElementById('icon_img').src = 'img/left.png';
     callParseData();
   }
   else
@@ -410,11 +411,11 @@ function toHex(number, min)
 		
 			<!-- <div class="nav-collapse collapse"> -->
 				<ul class="nav pull-right">
-					<li><a href="login.html" onmouseover='this.href=document.URL.replace(/index/,"login")'>Login</a></li>
+		<!-- 			<li><a href="login.html" onmouseover='this.href=document.URL.replace(/index/,"login")'>Login</a></li>
 					<li><a href="index.html" onmouseover='this.href=document.URL.replace(/index/,"index")'>Parent</a></li>
-					<li><a href="sendmylocation.html" onmouseover='this.href=document.URL.replace(/index/,"sendmylocation")'>Teenager</a></li>
-					<li><a href='comment_email.html' style="color: yellow;" onmouseover='this.href=document.URL.replace(/index/,"comment_email")'>Leave a Comment</a></li>
-          <li><a style="color: white;" onmouseover='this.style.cursor="pointer"' onclick='showSettings()'>Change settings</a></li>
+					<li><a href="sendmylocation.html" onmouseover='this.href=document.URL.replace(/index/,"sendmylocation")'>Teenager</a></li> -->
+          <li><a style="color: white;" onmouseover='this.style.cursor="pointer"' onclick='showSettings()'><img height='30px' src="img/info.png" id='icon_img'></a></li>
+          <!-- <li><a href='comment_email.html' style="color: yellow;" onmouseover='this.href=document.URL.replace(/index/,"comment_email")'>Leave a Comment</a></li> -->
 				</ul>
 			<!-- </div> -->
 		
@@ -427,7 +428,7 @@ function toHex(number, min)
 <!--<div class="container content container-fluid" id="home"> -->
 <div id="map_canvas" style="height:300px; margin-top:20px;"></div>
 
-<div id='legend'>Legend<br></div>
+<div id='legend'>Your kids<br></div>
 
 </div>
 <div id='form' style='display:none'>
@@ -581,6 +582,7 @@ function toHex(number, min)
     <!--<input type='checkbox' name='home' onclick='initialize()'/> Add home location--> <br> 
     <input type='button' name='get_url' class="btn btn btn-info btn-large" style="width:100%;" value='Update' onclick='updateParse(this.form)'/><br>
   </form>
+  <div style=' float: right; padding: 5%;'><a href='comment_email.html' style="color: black;" onmouseover='this.href=document.URL.replace(/index/,"comment_email")'>Leave a Comment</a></div>
   <div id="url_results" ></div>
   <div id='test'></div>
   <!-- <div id="map_canvas" style="padding:auto; width: 100%; height: 450px;"></div>  -->

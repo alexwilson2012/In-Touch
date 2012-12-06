@@ -31,8 +31,29 @@
         <meta name="viewport" content="width=device-width" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
             
-            <link href="http://fonts.googleapis.com/css?family=Exo:400,800" rel='stylesheet' type='text/css'>
-                
+        <link href="http://fonts.googleapis.com/css?family=Exo:400,800" rel='stylesheet' type='text/css'>
+            
+        <script type="text/javascript">
+        var toggle = 'off';
+        function showLinks()
+        {
+            if(toggle == 'off')
+            {
+                document.getElementById('link_1').style.display = 'block';
+                document.getElementById('link_2').style.display = 'block';
+                document.getElementById('link_3').style.display = 'block';
+                toggle = 'on';
+            }
+            else
+            {
+                document.getElementById('link_1').style.display = 'none';
+                document.getElementById('link_2').style.display = 'none';
+                document.getElementById('link_3').style.display = 'none';
+                toggle = 'off';
+            }
+        }
+
+        </script>
     </head>
                 
     <body onLoad="initializeMaps()" data-spy="scroll">
@@ -42,7 +63,7 @@
         <div class="navbar-inner">
         <div class="container">
         
-        <a class="brand pull-left" href="">
+        <a class="brand pull-left" href="#">
         inTouch | Teenager
         </a>
         
@@ -54,10 +75,12 @@
         
         <!-- <div class="nav-collapse collapse"> -->
         <ul class="nav pull-right">
-          <li><a href="login.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"login")'>Login</a></li>
-          <li><a href="index.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"index")'>Parent</a></li>
-          <li><a href="sendmylocation.html" onmouseover='this.href=document.URL.replace(/sendmylocation/,"sendmylocation")'>Teenager</a></li>
-          <li><a href='comment_email.html'  style="color: yellow;" onmouseover='this.href=document.URL.replace(/sendmylocation/,"comment_email")'>Leave a Comment</a></li>
+            <div id='fill_me_with_links'></div>
+          <li><a href="login.html" style='display: none' id='link_1' onmouseover='this.href=document.URL.replace(/sendmylocation/,"login")'>Login</a></li>
+          <li><a href="index.html" style='display: none' id='link_2' onmouseover='this.href=document.URL.replace(/sendmylocation/,"index")'>Parent</a></li>
+          <li><a href="sendmylocation.html" style='display: none' id='link_3' onmouseover='this.href=document.URL.replace(/sendmylocation/,"sendmylocation")'>Teenager</a></li>
+          <li><a style="color: white;" onmouseover='this.style.cursor="pointer"' onclick='showLinks()'><img height='30px' src="img/info.png" id='icon_img'></a></li>
+          <!-- <li><a href='comment_email.html'  style="color: yellow;" onmouseover='this.href=document.URL.replace(/sendmylocation/,"comment_email")'>Leave a Comment</a></li> -->
         </ul>
         <!-- </div> -->
         
