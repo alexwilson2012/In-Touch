@@ -2,6 +2,9 @@
 var preset_tolerance = 0.2; // as in ~0.2 mile radius
 var preset_location;
 
+var address_of_kid;
+var send_second_parent = 0;
+
 // Get the location of the user
 function getLocation()
 {
@@ -216,8 +219,6 @@ function sendDataToParse(emailVsText,emailVsText2,phone,phone2,carrier,carrier2,
   });
 }
 
-var address_of_kid;
-var send_second_parent = 0;
 
 function inPresetLocation(current_lat,current_lng,location_lat,location_lng)
 {
