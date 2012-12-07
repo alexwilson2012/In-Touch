@@ -46,6 +46,8 @@
 		76585B00167044A200734F26 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 76585AFA167044A200734F26 /* icon.png */; };
 		76585B01167044A200734F26 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 76585AFB167044A200734F26 /* icon@2x.png */; };
 		76585B0316704C5E00734F26 /* demo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 76585B0216704C5E00734F26 /* demo.gpx */; };
+		76585B46167189EC00734F26 /* test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 76585B45167189EC00734F26 /* test.gpx */; };
+		76585B4816718A4E00734F26 /* inTouchDemo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 76585B4716718A4E00734F26 /* inTouchDemo.gpx */; };
 		765B5D151667215200F9721C /* DGGeofencing.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B5D141667215200F9721C /* DGGeofencing.m */; };
 		765B5D181667217900F9721C /* DGGeofencingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 765B5D171667217900F9721C /* DGGeofencingHelper.m */; };
 		766169AF1665E17B002D9683 /* addReminderPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 766169AE1665E17B002D9683 /* addReminderPin.m */; };
@@ -113,6 +115,8 @@
 		76585AFA167044A200734F26 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		76585AFB167044A200734F26 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		76585B0216704C5E00734F26 /* demo.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = demo.gpx; path = inTouch/demo.gpx; sourceTree = "<group>"; };
+		76585B45167189EC00734F26 /* test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test.gpx; path = inTouch/test.gpx; sourceTree = "<group>"; };
+		76585B4716718A4E00734F26 /* inTouchDemo.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = inTouchDemo.gpx; path = inTouch/inTouchDemo.gpx; sourceTree = "<group>"; };
 		765B5D131667215200F9721C /* DGGeofencing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGeofencing.h; sourceTree = "<group>"; };
 		765B5D141667215200F9721C /* DGGeofencing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGGeofencing.m; sourceTree = "<group>"; };
 		765B5D161667217900F9721C /* DGGeofencingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGeofencingHelper.h; sourceTree = "<group>"; };
@@ -189,7 +193,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				76585B4716718A4E00734F26 /* inTouchDemo.gpx */,
 				76585B0216704C5E00734F26 /* demo.gpx */,
+				76585B45167189EC00734F26 /* test.gpx */,
 				301BF56E109A69640062928A /* www */,
 				301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -411,6 +417,8 @@
 				76585B00167044A200734F26 /* icon.png in Resources */,
 				76585B01167044A200734F26 /* icon@2x.png in Resources */,
 				76585B0316704C5E00734F26 /* demo.gpx in Resources */,
+				76585B46167189EC00734F26 /* test.gpx in Resources */,
+				76585B4816718A4E00734F26 /* inTouchDemo.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -160,17 +160,17 @@
                 if(object[0].attributes.school_address != null)
                 {
                     // document.getElementById('test').innerHTML = "SCHOOL<BR>LAT: "+object[0].attributes.school_lat+"<br>LONG: "+object[0].attributes.school_lng;
-                    addNewRegion('School',15,object[0].attributes.school_lat,object[0].attributes.school_lng);
+                    addNewRegion('School',1,object[0].attributes.school_lat,object[0].attributes.school_lng);
                 }
                 if(object[0].attributes.home_address != null)
                 {
                     // document.getElementById('test').innerHTML = "Home<BR>LAT: "+object[0].attributes.home_lat+"<br>LONG: "+object[0].attributes.home_lng;
-                    addNewRegion('Home',15,object[0].attributes.home_lat,object[0].attributes.home_lng);
+                    addNewRegion('Home',1,object[0].attributes.home_lat,object[0].attributes.home_lng);
                 }
                 if(object[0].attributes.work_address != '')
                 {
                     // document.getElementById('test').innerHTML = "Work<BR>LAT: "+object[0].attributes.school_lat+"<br>LONG: "+object[0].attributes.school_lng;
-                    addNewRegion('Work',15,object[0].attributes.work_lat,object[0].attributes.work_lng);
+                    addNewRegion('Work',1,object[0].attributes.work_lat,object[0].attributes.work_lng);
                 }
                 startMonitoringRegions();
             }

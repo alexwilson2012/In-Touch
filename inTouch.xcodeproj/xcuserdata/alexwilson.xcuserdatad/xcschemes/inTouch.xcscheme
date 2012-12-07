@@ -60,7 +60,7 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "../../inTouch/demo.gpx"
+         identifier = "../../inTouch/inTouchDemo.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>
