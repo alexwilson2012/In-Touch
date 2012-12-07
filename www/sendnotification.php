@@ -1,29 +1,27 @@
 <?php
 
-// Send confirmation message back to the user
+
 if($_POST['preset_location'] == '')
 {
-	echo 'Hi, ' . $_POST['name'] . '. We have notified ' . $_POST['parent_name'];
-	if($_POST['parent_name2'] != "")
-	{
-		echo ' and ' . $_POST['parent_name2'] . ' that you are at '.$_POST['address'].'!';
-	}
 	$location_name = $_POST['address'];
 }
 else
 {
-	echo 'Hi, ' . $_POST['name'] . '. We have notified ' . $_POST['parent_name'];
-	if($_POST['parent_name2'] != "")
-	{
-		echo ' and ' . $_POST['parent_name2'] . ' that you are at '.$_POST['preset_location'].'!';
-	}
 	$location_name = $_POST['preset_location'];
+}
+
+if($_POST['preset_location'] == '')
+{
+	echo '<br>We have notified ' . $_POST['parent_name'];
+}
+else
+{
+	echo '<br>We have notified ' . $_POST['parent_name'];
 }
 
 // Execute python script on command line
 
 
-// Parent 1
 if($_POST['phone_email'] == '')
 {
 	echo exec('python send_email.py '.$_POST['email'].' '.$_POST['Latitude'].' '.$_POST['Longitude'].' "'.$_POST['name'].'" "'.$location_name.'"');

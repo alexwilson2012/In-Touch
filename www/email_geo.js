@@ -1,5 +1,6 @@
 
 var preset_tolerance = 0.2; // as in ~0.2 mile radius
+var preset_location;
 
 // Get the location of the user
 function getLocation()
@@ -33,7 +34,7 @@ function showPosition(position)
         var distance_to_home = inPresetLocation(position.coords.latitude,position.coords.longitude,object[0].attributes.home_lat,object[0].attributes.home_lng);
         var distance_to_work = inPresetLocation(position.coords.latitude,position.coords.longitude,object[0].attributes.work_lat,object[0].attributes.work_lng);
         var distance_to_school = inPresetLocation(position.coords.latitude,position.coords.longitude,object[0].attributes.school_lat,object[0].attributes.school_lng);
-        var preset_location = '';
+        preset_location = '';
         // Parent 1
         var phone_email = new String();
         var phone = object[0].attributes.phone;
@@ -200,9 +201,13 @@ function sendDataToParse(emailVsText,emailVsText2,phone,phone2,carrier,carrier2,
         teen_db.set("address", results[0].formatted_address);
         teen_db.save(null, {
         success: function(teen_db) {
-            currentCoords = currentCoords+"&address="+results[0].formatted_address;
-            currentCoords2 = currentCoords2+"&address="+results[0].formatted_address;
+            address_of_kid = results[0].formatted_address;
+            currentCoords = currentCoords+"&address="+results[0].formatted_address+"&send_count=1";
+            currentCoords2 = currentCoords2+"&address="+results[0].formatted_address+"&send_count=2";
             // If everything is successul, send email
+            // alert(currentCoords)
+            // alert(currentCoords2)
+
             sendNotification(currentCoords);
             sendNotification(currentCoords2);
         }
@@ -210,6 +215,9 @@ function sendDataToParse(emailVsText,emailVsText2,phone,phone2,carrier,carrier2,
     } 
   });
 }
+
+var address_of_kid;
+var send_second_parent = 0;
 
 function inPresetLocation(current_lat,current_lng,location_lat,location_lng)
 {
@@ -228,7 +236,19 @@ function sendNotification(coords)
     {
         if(xmlHttp.readyState == 4)
         {
-            document.getElementById("response").innerHTML = xmlHttp.responseText;
+            if(send_second_parent == 0)
+            {
+              if(preset_location == '')
+              {
+                document.getElementById("response").innerHTML = 'You are at '+address_of_kid;
+              }
+              else
+              {
+                document.getElementById("response").innerHTML = 'You are at '+preset_location;
+              }
+              send_second_parent = 1;
+            }
+            document.getElementById("response").innerHTML += xmlHttp.responseText;
         }
     }
 
