@@ -257,7 +257,7 @@ function sendNotification(coords)
     var message = coords;
 
     // xmlHttp.open("POST", 'sendnotification.php', true);
-    xmlHttp.open("POST", 'http://ec2-54-242-115-65.compute-1.amazonaws.com/sendnotification.php', true);
+    xmlHttp.open("POST", 'http://ec2-54-242-115-65.compute-1.amazonaws.com/In-Touch-Native/www/sendnotification.php', true);
     xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xmlHttp.setRequestHeader("Content-length","message.length");
     xmlHttp.setRequestHeader("Connection","close");
